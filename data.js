@@ -2,7 +2,7 @@
 // today's ticket and bookmaker of the month. Dates use YYYY-MM-DD.
 
 // Today's ticket on the hero. Featured tips come from TIPS (featured: true).
-const TICKET = { bookmaker:"1xbet", bookingCode:"ABC123" };
+const TICKET = { bookmaker:"1xbet", bookingCode:"6RF9B" };
 
 // Bookmaker of the month
 const BOOK_OF_MONTH = { id:"1xbet", month:"October 2026", image:"images/1xbet-banner.webp",
@@ -35,13 +35,14 @@ const MAIN_LEAGUES = ["Premier League","La Liga","Serie A","Bundesliga","Ligue 1
 
 // Upcoming tips. confidence: 1–5. featured: true puts it on the hero betslip.
 const TIPS = [
-  {date:"2026-10-04", time:"16:00", league:"Premier League", home:"Arsenal", away:"Everton", tip:"Arsenal to win", odds:1.45, confidence:5, featured:true},
-  {date:"2026-10-04", time:"18:30", league:"La Liga", home:"Real Madrid", away:"Getafe", tip:"Over 2.5 goals", odds:1.62, confidence:4, featured:true},
-  {date:"2026-10-04", time:"21:45", league:"Serie A", home:"Inter", away:"Lazio", tip:"Both teams to score", odds:1.80, confidence:3, featured:true},
-  {date:"2026-10-05", time:"16:00", league:"Ligue 1", home:"PSG", away:"Nantes", tip:"PSG to win", odds:1.35, confidence:5},
-  {date:"2026-10-05", time:"19:00", league:"Ligue 1", home:"Lille", away:"Lens", tip:"Under 2.5 goals", odds:1.70, confidence:3},
-  {date:"2026-10-05", time:"22:00", league:"Bundesliga", home:"Dortmund", away:"Freiburg", tip:"Dortmund -1 handicap", odds:2.05, confidence:2},
-  {date:"2026-10-06", time:"21:30", league:"Primeira Liga", home:"Benfica", away:"Braga", tip:"Benfica to win", odds:1.75, confidence:3}
+  {date:"2026-10-07", time:"14:30", league:"I Liqa", home:"Sahdag Kusar", away:"Zaqatala", tip:"Over 1.5", odds:1.23, confidence:3},
+  {date:"2026-10-07", time:"17:00", league:"Egypt League Cup", home:"A. Petroleum", away:"Al Ahly", tip:"Al Ahly to Win", odds:1.50, confidence:3},
+  {date:"2026-10-07", time:"17:00", league:"Egypt League Cup", home:"Pyramids", away:"Al Qanah", tip:"Pyramids to Win", odds:1.59, confidence:3},
+  {date:"2026-10-07", time:"18:00", league:"Iraqi Stars League", home:"Al Mosul", away:"Al Quwa Al Jawiya", tip:"DC X2", odds:1.27, confidence:3},
+  {date:"2026-10-07", time:"18:00", league:"Nigerian Professional League", home:"Shooting Stars", away:"Kano Pillars", tip:"Shooting Stars to Win", odds:1.47, confidence:3},
+  {date:"2026-10-07", time:"19:00", league:"Veikkausliiga", home:"Gnistan", away:"Inter Turku", tip:"Over 1.5", odds:1.21, confidence:3, featured:true},
+  {date:"2026-10-07", time:"20:00", league:"Algeria Ligue 1", home:"CS Constantine", away:"Biskra", tip:"DC 12", odds:1.26, confidence:3, featured:true},
+  {date:"2026-10-07", time:"22:00", league:"Algeria Ligue 1", home:"CR Belouizdad", away:"Khenchela", tip:"Over 1.5", odds:1.31, confidence:3, featured:true}
 ];
 
 // Settled tips. result: "won" | "lost" | "void"
