@@ -35,7 +35,7 @@ const MAIN_LEAGUES = ["Premier League","La Liga","Serie A","Bundesliga","Ligue 1
 
 // Upcoming tips. confidence: 1–5. featured: true puts it on the hero betslip.
 const TIPS = [
-  {date:"2026-10-07", time:"14:30", league:"I Liqa", home:"Sahdag Kusar", away:"Zaqatala", tip:"Over 1.5", odds:1.23, confidence:3},
+  {date:"2026-10-07", time:"14:30", league:"Azerbaijan First Division", home:"Sahdag Kusar", away:"Zaqatala", tip:"Over 1.5", odds:1.23, confidence:3},
   {date:"2026-10-07", time:"17:00", league:"Egypt League Cup", home:"A. Petroleum", away:"Al Ahly", tip:"Al Ahly to Win", odds:1.50, confidence:3},
   {date:"2026-10-07", time:"17:00", league:"Egypt League Cup", home:"Pyramids", away:"Al Qanah", tip:"Pyramids to Win", odds:1.59, confidence:3},
   {date:"2026-10-07", time:"18:00", league:"Iraq Stars League", home:"Al Mosul", away:"Al Quwa Al Jawiya", tip:"DC X2", odds:1.27, confidence:3},
