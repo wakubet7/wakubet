@@ -38,7 +38,7 @@ const TIPS = [
   {date:"2026-10-07", time:"14:30", league:"I Liqa", home:"Sahdag Kusar", away:"Zaqatala", tip:"Over 1.5", odds:1.23, confidence:3},
   {date:"2026-10-07", time:"17:00", league:"Egypt League Cup", home:"A. Petroleum", away:"Al Ahly", tip:"Al Ahly to Win", odds:1.50, confidence:3},
   {date:"2026-10-07", time:"17:00", league:"Egypt League Cup", home:"Pyramids", away:"Al Qanah", tip:"Pyramids to Win", odds:1.59, confidence:3},
-  {date:"2026-10-07", time:"18:00", league:"Iraqi Stars League", home:"Al Mosul", away:"Al Quwa Al Jawiya", tip:"DC X2", odds:1.27, confidence:3},
+  {date:"2026-10-07", time:"18:00", league:"Iraq Stars League", home:"Al Mosul", away:"Al Quwa Al Jawiya", tip:"DC X2", odds:1.27, confidence:3},
   {date:"2026-10-07", time:"18:00", league:"Nigerian Professional League", home:"Shooting Stars", away:"Kano Pillars", tip:"Shooting Stars to Win", odds:1.47, confidence:3},
   {date:"2026-10-07", time:"19:00", league:"Veikkausliiga", home:"Gnistan", away:"Inter Turku", tip:"Over 1.5", odds:1.21, confidence:3, featured:true},
   {date:"2026-10-07", time:"20:00", league:"Algeria Ligue 1", home:"CS Constantine", away:"Biskra", tip:"DC 12", odds:1.26, confidence:3, featured:true},
