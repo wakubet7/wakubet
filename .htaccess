@@ -1,0 +1,7 @@
+# Wakubet: make sure updated tips (data.js), pages and scripts show immediately
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|js|php)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+    Header unset Expires
+  </FilesMatch>
+</IfModule>

@@ -506,8 +506,8 @@ section{padding:44px 0}
 <dialog id="reader"><div class="reader" id="readerBody"></div></dialog>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="data.js"></script>
-<script src="articles.js"></script>
+<script>/* load fresh data on every visit (bypasses the 7-day CDN/browser cache on .js files) */
+(function(){var v=Math.floor(Date.now()/60000);document.write('<script src="data.js?v='+v+'"><\/script><script src="articles.js?v='+v+'"><\/script>');})();</script>
 <script>
 const LOGOS = {"1xbet": "images/1xbet.webp", "betway": "images/betway.webp", "betwinner": "images/betwinner.webp", "melbet": "images/melbet.webp", "1win": "images/1win.webp", "paripesa": "images/paripesa.webp"};
 
