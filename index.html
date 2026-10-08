@@ -367,6 +367,8 @@ header{border-bottom:3px solid var(--card)}
 /* v13: capitalize each word in titles */
 /* title case handled in script (titleCaseAll) */
 
+.bk-empty{grid-column:1/-1;margin:0;color:var(--muted)}
+
 /* v14: tighter section spacing */
 section{padding:44px 0}
 .head{margin-bottom:20px}
@@ -758,7 +760,7 @@ $("#leagues").innerHTML = leaguesOf().filter(l=>RESULTS.some(r=>groupOf(r.league
 })();
 
 // booking code cards
-$("#bkCards").innerHTML = BOOKING_CODES.slice(0,3).map(t=>{ const b=BM[t.bookmaker]; if(!b) return ""; return `<article class="bk-card">
+$("#bkCards").innerHTML = !BOOKING_CODES.length ? `<p class="bk-empty">New booking codes are posted every match day.</p>` : BOOKING_CODES.slice(0,3).map(t=>{ const b=BM[t.bookmaker]; if(!b) return ""; return `<article class="bk-card">
   <div class="row1"><div><span class="bk-label">Booking code</span><h3>${esc(b.name)}</h3></div><img src="${LOGOS[b.id]}" alt="${esc(b.name)} logo"></div>
   <dl class="bk-meta">
     <div><dt>Date</dt><dd>${fmtDate(t.date)}</dd></div>
