@@ -21,6 +21,7 @@ const BOOKING_CODES = [
 
 // Booking code results, newest first. result: "won" | "lost"
 const BOOKING_RESULTS = [
+  { bookmaker:"1xbet",     date:"2026-10-08", games:3, odds:2.50,  code:"B58L2", result:"won" },
   { bookmaker:"1xbet",     date:"2026-10-07", games:3, odds:2.00,  code:"6RF9B", result:"lost" }
 ];
 
