@@ -662,7 +662,7 @@ $("#heroRecord").innerHTML = `
 
 // betslip
 (function(){
-  const feat = TIPS.filter(t=>t.featured), bk = BM[TICKET.bookmaker];
+  const feat = (TICKET.picks&&TICKET.picks.length) ? TICKET.picks.map(p=>Object.assign({date:TICKET.date},p)) : TIPS.filter(t=>t.featured), bk = BM[TICKET.bookmaker];
   const total = feat.reduce((a,t)=>a*t.odds,1);
   if(!feat.length){ $("#slip").innerHTML=`<h2>Today's ticket</h2><p>New picks are posted every match day.</p>`; return; }
   $("#slip").innerHTML = `
@@ -760,7 +760,10 @@ $("#leagues").innerHTML = leaguesOf().filter(l=>RESULTS.some(r=>groupOf(r.league
 })();
 
 // booking code cards
-$("#bkCards").innerHTML = !BOOKING_CODES.length ? `<p class="bk-empty">New booking codes are posted every match day.</p>` : BOOKING_CODES.slice(0,3).map(t=>{ const b=BM[t.bookmaker]; if(!b) return ""; return `<article class="bk-card">
+// today's ticket is always the first booking code card
+const TICKET_CARD = (TICKET.bookingCode && TICKET.picks && TICKET.picks.length) ? [{ bookmaker:TICKET.bookmaker, date:TICKET.date, games:TICKET.picks.length, odds:TICKET.picks.reduce((a,p)=>a*p.odds,1), code:TICKET.bookingCode }] : [];
+const ALL_CODES = TICKET_CARD.concat(BOOKING_CODES.filter(c=>!TICKET_CARD.length || c.code!==TICKET.bookingCode));
+$("#bkCards").innerHTML = !ALL_CODES.length ? `<p class="bk-empty">New booking codes are posted every match day.</p>` : ALL_CODES.slice(0,3).map(t=>{ const b=BM[t.bookmaker]; if(!b) return ""; return `<article class="bk-card">
   <div class="row1"><div><span class="bk-label">Booking code</span><h3>${esc(b.name)}</h3></div><img src="${LOGOS[b.id]}" alt="${esc(b.name)} logo"></div>
   <dl class="bk-meta">
     <div><dt>Date</dt><dd>${fmtDate(t.date)}</dd></div>
