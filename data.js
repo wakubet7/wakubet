@@ -2,10 +2,10 @@
 // today's ticket and bookmaker of the month. Dates use YYYY-MM-DD.
 
 // Today's ticket on the hero. It is also shown automatically as the first booking code card.
-const TICKET = { bookmaker:"1xbet", date:"2026-10-09", bookingCode:"B1NVD", picks:[
-  {time:"21:00", league:"Eredivisie", home:"PSV Eindhoven", away:"SC Heerenveen", tip:"1 - PSV Eindhoven to Win", odds:1.27},
-  {time:"21:30", league:"Bundesliga", home:"Borussia Dortmund", away:"Werder Bremen", tip:"GG - Both Teams to Score - Yes", odds:1.64},
-  {time:"22:00", league:"Championship", home:"West Ham United", away:"Queens Park Rangers", tip:"1 - West Ham United to Win", odds:1.50}
+const TICKET = { bookmaker:"1xbet", date:"2026-10-10", bookingCode:"HE9J3", picks:[
+  {time:"14:30", league:"Premier League", home:"Arsenal", away:"Leeds", tip:"1 - Arsenal to Win", odds:1.34},
+  {time:"17:00", league:"Premier League", home:"Sunderland", away:"Brighton", tip:"2 - Brighton to Win", odds:1.99},
+  {time:"17:15", league:"La Liga", home:"Deportivo Alaves", away:"Atletico Madrid", tip:"2 - Atletico Madrid to Win", odds:1.76}
 ]};
 
 // Bookmaker of the month
@@ -21,6 +21,7 @@ const BOOKING_CODES = [
 
 // Booking code results, newest first. result: "won" | "lost"
 const BOOKING_RESULTS = [
+  { bookmaker:"1xbet",     date:"2026-10-09", games:3, odds:3.12,  code:"B1NVD", result:"lost" },
   { bookmaker:"1xbet",     date:"2026-10-08", games:3, odds:2.50,  code:"B58L2", result:"won" },
   { bookmaker:"1xbet",     date:"2026-10-07", games:3, odds:2.00,  code:"6RF9B", result:"lost" }
 ];
@@ -30,20 +31,32 @@ const MAIN_LEAGUES = ["Premier League","La Liga","Serie A","Bundesliga","Ligue 1
 
 // Upcoming tips. confidence: 1–5. featured: true puts it on the hero betslip.
 const TIPS = [
-  {date:"2026-10-09", time:"16:50", league:"Saudi Pro League", home:"Al Kholood", away:"Al Qadsiah", tip:"Al Qadsiah to Win", odds:1.50, confidence:3},
-  {date:"2026-10-09", time:"19:45", league:"Algeria Ligue 1", home:"Kabylie", away:"ASO Chlef", tip:"Kabylie to Win", odds:1.42, confidence:3},
-  {date:"2026-10-09", time:"21:00", league:"Eredivisie", home:"PSV", away:"Heerenveen", tip:"PSV to Win", odds:1.27, confidence:3},
-  {date:"2026-10-09", time:"21:00", league:"Saudi Pro League", home:"Al Nassr", away:"Al Diriyah", tip:"Al Nassr to Win", odds:1.39, confidence:3},
-  {date:"2026-10-09", time:"21:30", league:"Bundesliga", home:"Dortmund", away:"Werder Bremen", tip:"Dortmund to Win", odds:1.35, confidence:3},
-  {date:"2026-10-09", time:"21:45", league:"Ligue 1", home:"Lens", away:"Lyon", tip:"DC 12", odds:1.29, confidence:3},
-  {date:"2026-10-09", time:"21:45", league:"Jupiler Pro League", home:"Beveren", away:"Lommel SK", tip:"DC 1X", odds:1.23, confidence:3},
-  {date:"2026-10-09", time:"22:00", league:"Algeria Ligue 1", home:"MC Alger", away:"Temouchent", tip:"MC Alger to Win", odds:1.17, confidence:3},
-  {date:"2026-10-09", time:"22:00", league:"La Liga", home:"Malaga", away:"Espanyol", tip:"Over 1.5", odds:1.33, confidence:3},
-  {date:"2026-10-09", time:"22:00", league:"Championship", home:"West Ham", away:"Queens Park Rangers", tip:"West Ham to Win", odds:1.50, confidence:3}
+  {date:"2026-10-10", time:"14:30", league:"Premier League", home:"Arsenal", away:"Leeds", tip:"Over 1.5", odds:1.26, confidence:3},
+  {date:"2026-10-10", time:"16:30", league:"Bundesliga", home:"Augsburg", away:"Bayern Munich", tip:"Over 3.5", odds:1.38, confidence:3},
+  {date:"2026-10-10", time:"16:30", league:"Bundesliga", home:"Mainz", away:"Bayer Leverkusen", tip:"DC 12", odds:1.27, confidence:3},
+  {date:"2026-10-10", time:"17:00", league:"Premier League", home:"Chelsea", away:"Bournemouth", tip:"DC 12", odds:1.24, confidence:3},
+  {date:"2026-10-10", time:"17:00", league:"Premier League", home:"Aston Villa", away:"Brentford", tip:"Over 1.5", odds:1.22, confidence:3},
+  {date:"2026-10-10", time:"19:00", league:"NBC Premier League", home:"Simba", away:"Young Africans", tip:"DC 12", odds:1.33, confidence:3},
+  {date:"2026-10-10", time:"19:00", league:"Serie A", home:"Inter", away:"Parma", tip:"Inter to Win", odds:1.15, confidence:3},
+  {date:"2026-10-10", time:"19:30", league:"Premier League", home:"Manchester United", away:"Tottenham", tip:"DC 12", odds:1.24, confidence:3},
+  {date:"2026-10-10", time:"19:30", league:"Bundesliga", home:"RB Leipzig", away:"Eintracht Frankfurt", tip:"Over 2.5", odds:1.28, confidence:3},
+  {date:"2026-10-10", time:"19:30", league:"La Liga", home:"Barcelona", away:"Getafe", tip:"Barcelona to Win", odds:1.10, confidence:3},
+  {date:"2026-10-10", time:"21:45", league:"Ligue 1", home:"PSG", away:"Le Mans", tip:"PSG to Win", odds:1.10, confidence:3},
+  {date:"2026-10-10", time:"22:00", league:"La Liga", home:"Real Madrid", away:"Villarreal", tip:"Real Madrid to Win", odds:1.38, confidence:3}
 ];
 
 // Settled tips. result: "won" | "lost" | "void"
 const RESULTS = [
+  {date:"2026-10-09", league:"Algeria Ligue 1", home:"Kabylie", away:"ASO Chlef", tip:"Kabylie to Win", odds:1.42, score:"1-0", result:"won"},
+  {date:"2026-10-09", league:"Algeria Ligue 1", home:"MC Alger", away:"Temouchent", tip:"MC Alger to Win", odds:1.17, score:"1-0", result:"won"},
+  {date:"2026-10-09", league:"Ligue 1", home:"Lens", away:"Lyon", tip:"DC 12", odds:1.29, score:"2-1", result:"won"},
+  {date:"2026-10-09", league:"Bundesliga", home:"Dortmund", away:"Werder Bremen", tip:"Dortmund to Win", odds:1.35, score:"2-2", result:"lost"},
+  {date:"2026-10-09", league:"Eredivisie", home:"PSV", away:"Heerenveen", tip:"PSV to Win", odds:1.27, score:"2-0", result:"won"},
+  {date:"2026-10-09", league:"La Liga", home:"Malaga", away:"Espanyol", tip:"Over 1.5", odds:1.33, score:"1-1", result:"won"},
+  {date:"2026-10-09", league:"Saudi Pro League", home:"Al Kholood", away:"Al Qadsiah", tip:"Al Qadsiah to Win", odds:1.50, score:"0-5", result:"won"},
+  {date:"2026-10-09", league:"Saudi Pro League", home:"Al Nassr", away:"Al Diriyah", tip:"Al Nassr to Win", odds:1.39, score:"3-0", result:"won"},
+  {date:"2026-10-09", league:"Championship", home:"West Ham", away:"Queens Park Rangers", tip:"West Ham to Win", odds:1.50, score:"1-1", result:"lost"},
+  {date:"2026-10-09", league:"Jupiler Pro League", home:"Beveren", away:"Lommel SK", tip:"DC 1X", odds:1.23, score:"1-3", result:"lost"},
   {date:"2026-10-08", league:"Algeria Ligue 1", home:"Rouisset", away:"USM Alger", tip:"DC 12", odds:1.34, score:"1-0", result:"won"},
   {date:"2026-10-08", league:"Algeria Ligue 1", home:"Saoura", away:"Olympique Akbou", tip:"DC 12", odds:1.31, score:"0-0", result:"lost"},
   {date:"2026-10-08", league:"Algeria Ligue 1", home:"Oran", away:"ES Setif", tip:"DC 1X", odds:1.21, score:"0-0", result:"won"},
