@@ -15,8 +15,8 @@ const BOOK_OF_MONTH = { id:"1xbet", month:"October 2026", image:"images/1xbet-ba
 
 // Booking codes: up to 3 shown as cards. odds is optional.
 const BOOKING_CODES = [
-  { bookmaker:"melbet",    date:"2026-10-04", games:5, odds:9.80,  code:"MLB456" },
-  { bookmaker:"betwinner", date:"2026-10-05", games:4, odds:7.15,  code:"BW789X" }
+  { bookmaker:"betway",    date:"2026-10-13", games:3, odds:4.00,  code:"BW795FA342" },
+  { bookmaker:"1win",      date:"2026-10-13", games:5, odds:10.16, code:"TdV2dca6" }
 ];
 
 // Booking code results, newest first. result: "won" | "lost"
