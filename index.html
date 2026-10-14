@@ -920,5 +920,38 @@ window.addEventListener("hashchange", route);
 route();
 titleCaseAll();
 </script>
+<!-- pop-up ad (shown once per visit, a few seconds after the page loads) -->
+<style>
+.pop-ad{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;background:rgba(19,32,26,.6);padding:16px}
+.pop-ad[hidden]{display:none}
+.pop-ad-box{position:relative;background:#fff;border-radius:10px;padding:28px 10px 10px;box-shadow:0 20px 50px rgba(0,0,0,.35);border-top:4px solid var(--card,#F2C230)}
+.pop-ad-box iframe{display:block;width:300px;height:250px;max-width:100%;border:0}
+.pop-ad-lbl{position:absolute;top:7px;left:12px;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:#5C6B63}
+.pop-ad-x{position:absolute;top:2px;right:4px;width:32px;height:28px;border:0;background:transparent;font-size:24px;line-height:1;cursor:pointer;color:#13201A}
+.pop-ad-x:hover{color:#D23B3B}
+</style>
+<div id="popAd" class="pop-ad" hidden role="dialog" aria-modal="true" aria-label="Advertisement">
+  <div class="pop-ad-box">
+    <span class="pop-ad-lbl">Ad · 18+</span>
+    <button class="pop-ad-x" type="button" aria-label="Close ad">&times;</button>
+    <iframe id="popAdFrame" scrolling="no" title="Advertisement" width="300" height="250"></iframe>
+  </div>
+</div>
+<script>
+(function(){
+  var KEY="wakubetPopAdSeen", box=document.getElementById("popAd"), fr=document.getElementById("popAdFrame");
+  var seen=false; try{ seen=sessionStorage.getItem(KEY)==="1"; }catch(e){}
+  if(seen) return;
+  function close(){ box.hidden=true; }
+  box.querySelector(".pop-ad-x").onclick=close;
+  box.addEventListener("click",function(e){ if(e.target===box) close(); });
+  document.addEventListener("keydown",function(e){ if(e.key==="Escape") close(); });
+  setTimeout(function(){
+    fr.src="https://refbanners.com/I?tag=d_52358m_8459c_&site=52358&ad=8459";
+    box.hidden=false;
+    try{ sessionStorage.setItem(KEY,"1"); }catch(e){}
+  },4000);
+})();
+</script>
 </body>
 </html>
