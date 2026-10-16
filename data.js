@@ -2,10 +2,10 @@
 // today's ticket and bookmaker of the month. Dates use YYYY-MM-DD.
 
 // Today's ticket on the hero. It is also shown automatically as the first booking code card.
-const TICKET = { bookmaker:"1xbet", date:"2026-10-15", bookingCode:"ANMMS", picks:[
-  {time:"19:45", league:"Europa League", home:"FC Salzburg", away:"AC Milan", tip:"2 - AC Milan to Win", odds:1.73},
-  {time:"22:00", league:"Europa League", home:"Celta Vigo", away:"Juventus", tip:"2 - Juventus to Win", odds:2.06},
-  {time:"22:00", league:"Europa League", home:"Dinamo Zagreb", away:"Anderlecht", tip:"1 - Dinamo Zagreb to Win", odds:1.91}
+const TICKET = { bookmaker:"1xbet", date:"2026-10-16", bookingCode:"UNABU", picks:[
+  {time:"21:00", league:"Eredivisie", home:"Heerenveen", away:"Excelsior", tip:"1 - Heerenveen to Win", odds:1.45},
+  {time:"21:30", league:"Serie B", home:"Hellas Verona", away:"US Catanzaro", tip:"1 - Hellas Verona to Win", odds:1.70},
+  {time:"22:00", league:"La Liga", home:"Deportivo La Coruna", away:"Levante UD", tip:"1 - Deportivo La Coruna to Win", odds:1.84}
 ]};
 
 // Bookmaker of the month
@@ -15,12 +15,15 @@ const BOOK_OF_MONTH = { id:"1xbet", month:"October 2026", image:"images/1xbet-ba
 
 // Booking codes: up to 3 shown as cards. odds is optional.
 const BOOKING_CODES = [
-  { bookmaker:"betway",    date:"2026-10-15", games:4, odds:5.05,  code:"BW79F4BC7F" },
-  { bookmaker:"1win",      date:"2026-10-15", games:8, odds:40.69, code:"K30ZLB80" }
+  { bookmaker:"betway",    date:"2026-10-16", games:3, odds:4.49,  code:"BW7A450713" },
+  { bookmaker:"1win",      date:"2026-10-16", games:7, odds:34.84, code:"vsHja529" }
 ];
 
 // Booking code results, newest first. result: "won" | "lost"
 const BOOKING_RESULTS = [
+  { bookmaker:"1xbet",     date:"2026-10-15", games:3, odds:6.81,  code:"ANMMS", result:"won" },
+  { bookmaker:"betway",    date:"2026-10-15", games:4, odds:5.05,  code:"BW79F4BC7F", result:"won" },
+  { bookmaker:"1win",      date:"2026-10-15", games:8, odds:40.69, code:"K30ZLB80", result:"won" },
   { bookmaker:"1xbet",     date:"2026-10-14", games:3, odds:4.04,  code:"GB88Q", result:"won" },
   { bookmaker:"betway",    date:"2026-10-14", games:4, odds:4.27,  code:"BW79ABB2DD", result:"won" },
   { bookmaker:"1win",      date:"2026-10-14", games:7, odds:223.30, code:"bomfkk36", result:"lost" },
@@ -40,22 +43,34 @@ const MAIN_LEAGUES = ["Premier League","La Liga","Serie A","Bundesliga","Ligue 1
 
 // Upcoming tips. confidence: 1–5. featured: true puts it on the hero betslip.
 const TIPS = [
-  {date:"2026-10-15", time:"19:45", league:"Europa League", home:"Lech Poznan", away:"Bayer Leverkusen", tip:"Bayer Leverkusen to Win", odds:1.60, confidence:3},
-  {date:"2026-10-15", time:"19:45", league:"Europa League", home:"Lyon", away:"Crystal Palace", tip:"DC 12", odds:1.28, confidence:3},
-  {date:"2026-10-15", time:"19:45", league:"Europa League", home:"Salzburg", away:"AC Milan", tip:"DC X2", odds:1.29, confidence:3},
-  {date:"2026-10-15", time:"19:45", league:"Europa League", home:"Royale Union SG", away:"Real Sociedad", tip:"Over 1.5", odds:1.19, confidence:3},
-  {date:"2026-10-15", time:"19:45", league:"Europa League", home:"Torreense", away:"Sunderland", tip:"Sunderland to Win", odds:1.36, confidence:3},
-  {date:"2026-10-15", time:"19:45", league:"Conference League", home:"CSKA Sofia", away:"Monaco", tip:"Over 1.5", odds:1.20, confidence:3},
-  {date:"2026-10-15", time:"20:00", league:"Conference League", home:"Brighton", away:"Kauno Zalgiris", tip:"2nd Half Over 1.5", odds:1.34, confidence:3},
-  {date:"2026-10-15", time:"22:00", league:"Europa League", home:"Benfica", away:"Celtic", tip:"Benfica to Win", odds:1.25, confidence:3},
-  {date:"2026-10-15", time:"22:00", league:"Europa League", home:"Celta Vigo", away:"Juventus", tip:"DC 12", odds:1.34, confidence:3},
-  {date:"2026-10-15", time:"22:00", league:"Europa League", home:"Bournemouth", away:"Sturm Graz", tip:"Bournemouth to Win", odds:1.20, confidence:3},
-  {date:"2026-10-15", time:"22:00", league:"Europa League", home:"Marseille", away:"Olympiacos", tip:"Over 1.5", odds:1.24, confidence:3},
-  {date:"2026-10-15", time:"22:00", league:"Conference League", home:"Atalanta", away:"Pafos", tip:"Atalanta to Win", odds:1.35, confidence:3}
+  {date:"2026-10-16", time:"16:00", league:"NBC Premier League", home:"Fountain Gate", away:"Pamba", tip:"DC 12", odds:1.30, confidence:3},
+  {date:"2026-10-16", time:"16:15", league:"Saudi Pro League", home:"Al Qadsiah", away:"Abha", tip:"Al Qadsiah to Win", odds:1.12, confidence:3},
+  {date:"2026-10-16", time:"17:30", league:"Algeria Ligue 1", home:"Olympique Akbou", away:"Ben Aknoun", tip:"Over 1.5", odds:1.45, confidence:3},
+  {date:"2026-10-16", time:"19:00", league:"NBC Premier League", home:"Geita Gold", away:"Dodoma FC", tip:"DC 1X", odds:1.30, confidence:3},
+  {date:"2026-10-16", time:"20:00", league:"Super Lig", home:"Corum", away:"Rizespor", tip:"Over 1.5", odds:1.21, confidence:3},
+  {date:"2026-10-16", time:"20:00", league:"Superliga", home:"Horsens", away:"Randers", tip:"Over 1.5", odds:1.24, confidence:3},
+  {date:"2026-10-16", time:"21:00", league:"Eredivisie", home:"Heerenveen", away:"Excelsior", tip:"Heerenveen to Win", odds:1.53, confidence:3},
+  {date:"2026-10-16", time:"21:30", league:"Bundesliga", home:"Eintracht Frankfurt", away:"FC Koln", tip:"DC 1X", odds:1.27, confidence:3},
+  {date:"2026-10-16", time:"21:45", league:"Ligue 1", home:"Le Mans", away:"Toulouse", tip:"Over 1.5", odds:1.20, confidence:3},
+  {date:"2026-10-16", time:"21:45", league:"Serie A", home:"Frosinone", away:"Sassuolo", tip:"DC 12", odds:1.27, confidence:3},
+  {date:"2026-10-16", time:"22:00", league:"Championship", home:"Burnley", away:"Wolves", tip:"Over 1.5", odds:1.26, confidence:3},
+  {date:"2026-10-16", time:"22:00", league:"La Liga", home:"Deportivo La Coruna", away:"Levante", tip:"DC 1X", odds:1.28, confidence:3}
 ];
 
 // Settled tips. result: "won" | "lost" | "void"
 const RESULTS = [
+  {date:"2026-10-15", league:"Europa League", home:"Lech Poznan", away:"Bayer Leverkusen", tip:"Bayer Leverkusen to Win", odds:1.60, score:"0-4", result:"won"},
+  {date:"2026-10-15", league:"Europa League", home:"Lyon", away:"Crystal Palace", tip:"DC 12", odds:1.28, score:"3-2", result:"won"},
+  {date:"2026-10-15", league:"Europa League", home:"Salzburg", away:"AC Milan", tip:"DC X2", odds:1.29, score:"0-4", result:"won"},
+  {date:"2026-10-15", league:"Europa League", home:"Royale Union SG", away:"Real Sociedad", tip:"Over 1.5", odds:1.19, score:"1-1", result:"won"},
+  {date:"2026-10-15", league:"Europa League", home:"Torreense", away:"Sunderland", tip:"Sunderland to Win", odds:1.36, score:"1-2", result:"won"},
+  {date:"2026-10-15", league:"Conference League", home:"CSKA Sofia", away:"Monaco", tip:"Over 1.5", odds:1.20, score:"1-2", result:"won"},
+  {date:"2026-10-15", league:"Conference League", home:"Brighton", away:"Kauno Zalgiris", tip:"2nd Half Over 1.5", odds:1.34, score:"4-0", result:"won"},
+  {date:"2026-10-15", league:"Europa League", home:"Benfica", away:"Celtic", tip:"Benfica to Win", odds:1.25, score:"4-1", result:"won"},
+  {date:"2026-10-15", league:"Europa League", home:"Celta Vigo", away:"Juventus", tip:"DC 12", odds:1.34, score:"1-2", result:"won"},
+  {date:"2026-10-15", league:"Europa League", home:"Bournemouth", away:"Sturm Graz", tip:"Bournemouth to Win", odds:1.20, score:"3-0", result:"won"},
+  {date:"2026-10-15", league:"Europa League", home:"Marseille", away:"Olympiacos", tip:"Over 1.5", odds:1.24, score:"0-1", result:"lost"},
+  {date:"2026-10-15", league:"Conference League", home:"Atalanta", away:"Pafos", tip:"Atalanta to Win", odds:1.35, score:"3-1", result:"won"},
   {date:"2026-10-14", league:"Champions League", home:"Feyenoord", away:"Como", tip:"DC 12", odds:1.25, score:"3-2", result:"won"},
   {date:"2026-10-14", league:"Champions League", home:"LASK", away:"Liverpool", tip:"Liverpool to Win", odds:1.38, score:"3-6", result:"won"},
   {date:"2026-10-14", league:"Algeria Ligue 1", home:"ES Setif", away:"Kabylie", tip:"DC 1X", odds:1.22, score:"1-1", result:"won"},
