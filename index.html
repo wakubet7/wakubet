@@ -104,6 +104,9 @@ section.alt{background:var(--soft)}
 
 /* tip rows */
 .scroll{overflow-x:auto}
+#resScroll{overflow-y:auto;-webkit-overflow-scrolling:touch;border-bottom:1px solid var(--line)}
+#resScroll thead th{position:sticky;top:0;z-index:1;background:var(--soft)}
+.scroll-hint{margin:8px 0 0;font-size:14px;color:var(--muted)}
 table{width:100%;border-collapse:collapse;min-width:680px}
 th{text-align:left;font-size:14px;color:var(--muted);font-weight:600;padding:10px 12px;border-bottom:2px solid var(--ink)}
 td{padding:14px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
@@ -442,11 +445,11 @@ section{padding:44px 0}
         <div><h2>Past results</h2><p>Settled tips, newest first. Nothing gets deleted.</p></div>
         <div class="chips" id="resFilters"></div>
       </div>
-      <div class="scroll"><table>
+      <div class="scroll" id="resScroll"><table>
         <thead><tr><th>Date</th><th>Match</th><th>Tip</th><th>Odds</th><th>Score</th><th>Result</th></tr></thead>
         <tbody id="resRows"></tbody>
       </table></div>
-      <div class="more" id="moreWrap"><button class="btn" id="moreBtn" aria-expanded="false"></button></div>
+      <p class="scroll-hint" id="resHint"></p>
     </div>
   </section>
 
@@ -722,19 +725,29 @@ function drawTips(league=tipLeague){
 chips($("#tipFilters"), leaguesOf(TIPS), l=>{tipsOpen=false;drawTips(l);}); drawTips();
 $("#tipMoreBtn").onclick=()=>{ tipsOpen=!tipsOpen; drawTips(); if(!tipsOpen) $("#tips").scrollIntoView(); };
 
-let resLeague="All", resOpen=false;
+let resLeague="All";
+function fitResults(){
+  const box=$("#resScroll"); if(!box) return;
+  const head=box.querySelector("thead"), trs=[...box.querySelectorAll("tbody tr")];
+  if(trs.length<=RESULTS_LIMIT){ box.style.maxHeight=""; return; }
+  let h=head?head.getBoundingClientRect().height:0;
+  trs.slice(0,RESULTS_LIMIT).forEach(tr=>h+=tr.getBoundingClientRect().height);
+  box.style.maxHeight=Math.ceil(h)+"px";
+}
 function drawResults(){
   const rows = RESULTS.filter(r=>inGroup(r,resLeague));
-  expandBtn($("#moreWrap"), $("#moreBtn"), rows.length, RESULTS_LIMIT, resOpen, "results");
-  $("#resRows").innerHTML = (resOpen ? rows : rows.slice(0,RESULTS_LIMIT)).map(r=>`<tr>
+  $("#resHint").textContent = rows.length>RESULTS_LIMIT ? `Showing ${rows.length} results. Scroll the table to see older ones.` : "";
+  $("#resScroll").scrollTop=0;
+  $("#resRows").innerHTML = rows.map(r=>`<tr>
     <td>${fmtDate(r.date)}</td>
     <td class="match"><b>${esc(r.home)} - ${esc(r.away)}</b><span>${esc(r.league)}</span></td>
     <td>${esc(r.tip)}</td><td class="odds">${r.odds.toFixed(2)}</td>
     <td class="score">${esc(r.score)}</td><td><span class="pill ${r.result}">${r.result[0].toUpperCase()+r.result.slice(1)}</span></td></tr>`).join("")
     || `<tr><td colspan="6" class="empty">No settled tips for this league yet.</td></tr>`;
+  fitResults();
 }
-chips($("#resFilters"), leaguesOf(RESULTS), l=>{resLeague=l;resOpen=false;drawResults();});
-$("#moreBtn").onclick=()=>{ resOpen=!resOpen; drawResults(); if(!resOpen) $("#results").scrollIntoView(); };
+chips($("#resFilters"), leaguesOf(RESULTS), l=>{resLeague=l;drawResults();});
+window.addEventListener("resize", fitResults); window.addEventListener("load", fitResults);
 drawResults();
 
 // performance
