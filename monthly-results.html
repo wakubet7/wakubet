@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Monthly Results Report | Wakubet</title>
+<meta name="description" content="Every Wakubet football tip from the month with its result, plus the full performance report: win rate, profit, best streak, leagues, markets and booking codes.">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --soft:#F3F6F4; --ink:#13201A; --muted:#5C6B63; --line:#DCE3DF;
+  --pitch:#0E5A3A; --pitch-2:#147A4F; --card:#F2C230; --win:#1F9D55; --loss:#D23B3B; --void:#8A958F;
+  box-sizing:border-box;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.55}
+h1,h2,h3,.num{font-family:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;line-height:1.05;margin:0}
+a{color:inherit}
+img{max-width:100%}
+:focus-visible{outline:3px solid var(--card);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+
+/* header (same as home) */
+header{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:3px solid var(--card)}
+.bar{display:flex;align-items:center;gap:24px;height:64px;position:relative}
+.logo{display:flex;align-items:center;text-decoration:none}
+.logo img{display:block;height:34px;width:auto}
+nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin-left:auto}
+nav::-webkit-scrollbar{display:none}
+nav a{text-decoration:none;padding:8px 12px;border-radius:6px;font-weight:600;color:var(--muted);white-space:nowrap}
+nav a:hover,nav a[aria-current]{color:var(--ink);background:var(--soft)}
+.age{flex:none;font-weight:700;font-size:13px;border:2px solid var(--ink);border-radius:50%;width:36px;height:36px;display:grid;place-items:center}
+.burger{display:none;width:44px;height:44px;border:0;background:transparent;cursor:pointer;padding:10px;flex-direction:column;justify-content:space-between;border-radius:8px}
+.burger span{display:block;height:3px;border-radius:2px;background:var(--ink);transition:transform .2s,opacity .2s}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(9.5px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-9.5px) rotate(-45deg)}
+@media (max-width:760px){
+  .logo img{height:28px}
+  .bar{height:60px;padding:0 12px 0 20px;gap:12px}
+  .age{margin-left:auto}
+  .burger{display:flex}
+  nav{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;gap:0;background:var(--bg);border-bottom:3px solid var(--card);padding:6px 20px 14px;box-shadow:0 12px 24px rgba(0,0,0,.12);margin:0}
+  nav.open{display:flex}
+  nav a{padding:14px 4px;border-bottom:1px solid var(--line);border-radius:0;color:var(--ink);font-size:18px}
+  nav a:last-child{border-bottom:0}
+}
+
+/* hero */
+.hero{background:var(--pitch);color:#fff;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 90px,rgba(255,255,255,.035) 90px 180px);pointer-events:none}
+.hero .wrap{position:relative;padding-top:44px;padding-bottom:48px}
+.hero .kick{display:inline-block;background:var(--card);color:#13201A;font-weight:700;font-size:13px;padding:3px 10px;border-radius:4px;margin-bottom:14px}
+.hero h1{font-size:clamp(40px,6vw,68px);font-weight:800;letter-spacing:-.5px}
+.hero p{font-size:19px;max-width:38em;color:rgba(255,255,255,.85);margin:14px 0 0}
+.months{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.months a{text-decoration:none;font-weight:600;font-size:15px;padding:7px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.45);color:#fff}
+.months a[aria-current]{background:var(--card);border-color:var(--card);color:#13201A}
+
+/* sections */
+section{padding:44px 0}
+section.alt{background:var(--soft)}
+.head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:20px}
+.head h2{font-size:clamp(32px,4.5vw,46px);font-weight:800}
+.head p{margin:8px 0 0;color:var(--muted);max-width:42em}
+@media (max-width:760px){section{padding:32px 0}.head{margin-bottom:16px}}
+
+/* stat tiles */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.stats div{background:var(--bg);padding:18px 20px}
+.stats .num{font-size:40px;font-weight:800;display:block}
+.stats small{color:var(--muted);font-size:14px;display:block;margin-top:4px}
+.stats + .stats{margin-top:14px}
+.pos{color:var(--win)}.neg{color:var(--loss)}
+@media (max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}.stats .num{font-size:34px}}
+
+/* panels */
+.grid2{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;margin-top:24px}
+.grid2.even{grid-template-columns:1fr 1fr}
+@media (max-width:860px){.grid2,.grid2.even{grid-template-columns:1fr}}
+.panel{border:1px solid var(--line);border-radius:10px;padding:20px;background:var(--bg);min-width:0}
+.panel h3{font-size:24px;font-weight:700;margin-bottom:14px}
+.chart svg{width:100%;height:auto;display:block}
+.chart text{fill:var(--muted);font-size:12px;font-family:"Barlow",sans-serif}
+.form{display:flex;gap:4px;flex-wrap:wrap}
+.form span{width:22px;height:22px;border-radius:4px;display:grid;place-items:center;color:#fff;font-weight:700;font-size:11px}
+.hl{display:grid;gap:0}
+.hl div{display:grid;grid-template-columns:1fr auto;gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:15px}
+.hl div:first-child{border-top:0;padding-top:0}
+.hl b{font-weight:700;text-align:right}
+.hl span{color:var(--muted)}
+
+/* tables */
+.scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;font-size:14px;color:var(--muted);font-weight:600;padding:10px 12px;border-bottom:2px solid var(--ink);white-space:nowrap}
+td{padding:12px;border-bottom:1px solid var(--line);vertical-align:middle}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+td.match b{display:block;font-weight:600}
+td.match span{font-size:14px;color:var(--muted)}
+td.odds{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:21px}
+.score{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:20px}
+.pill{display:inline-block;font-weight:700;font-size:13px;padding:3px 10px;border-radius:4px;color:#fff}
+.pill.won{background:var(--win)}.pill.lost{background:var(--loss)}.pill.void{background:var(--void)}
+.bar-cell{min-width:110px}
+.bar-cell i{display:block;height:8px;border-radius:4px;background:var(--line);overflow:hidden}
+.bar-cell i b{display:block;height:100%;background:var(--win)}
+#allScroll{max-height:640px;overflow-y:auto;border-bottom:1px solid var(--line)}
+#allScroll thead th{position:sticky;top:0;z-index:1;background:var(--soft)}
+.capped{max-height:440px;overflow-y:auto}
+.capped thead th{position:sticky;top:0;z-index:1;background:var(--bg)}
+#allScroll table{min-width:680px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:var(--bg);color:var(--ink);padding:7px 14px;border-radius:999px;font:inherit;font-size:15px;font-weight:600;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.note{font-size:14px;color:var(--muted);margin:10px 0 0}
+.empty{padding:28px;text-align:center;color:var(--muted)}
+
+/* booking codes */
+.bk-sum{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
+@media (max-width:700px){.bk-sum{grid-template-columns:1fr}}
+.bk-sum article{border:1px solid var(--line);border-radius:10px;padding:16px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;background:var(--bg)}
+.bk-sum img{width:80px;aspect-ratio:16/9;object-fit:cover;border-radius:6px}
+.bk-sum b{font-family:"Barlow Condensed",sans-serif;font-size:26px;font-weight:800;display:block}
+.bk-sum span{color:var(--muted);font-size:14px}
+code{font-family:"Barlow Condensed",sans-serif;font-size:17px;font-weight:700;letter-spacing:1px}
+
+.back{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;padding:13px 22px;border-radius:8px;background:var(--pitch);color:#fff}
+.back:hover{background:var(--pitch-2)}
+
+/* responsible + footer (same as home) */
+.rg{background:var(--card);color:#13201A}
+.rg .wrap{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;padding-top:36px;padding-bottom:36px}
+.rg .age{width:72px;height:72px;font-size:26px;border-width:3px;border-color:#13201A}
+.rg h2{font-size:32px;font-weight:800}
+.rg p{margin:6px 0 0;max-width:60em}
+footer{background:#13201A;color:#C9D3CE;padding:40px 0;font-size:15px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:20px 40px;justify-content:space-between}
+footer a{color:#fff;text-decoration:none;font-weight:700}
+footer a:hover{color:var(--card)}
+footer .disc{flex-basis:100%;font-size:13px;color:#8FA098;border-top:1px solid #2A3A31;padding-top:20px}
+.foot-logo{display:block;height:34px;width:auto;margin-bottom:10px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="index.html" aria-label="Wakubet home"><img src="images/wakubet-logo-dark.webp" alt="Wakubet"></a>
+    <nav aria-label="Main" id="mainNav">
+      <a href="index.html#tips">Today's tips</a>
+      <a href="index.html#booking">Booking codes</a>
+      <a href="index.html#results" aria-current="page">Results</a>
+      <a href="index.html#performance">Performance</a>
+      <a href="index.html#bookmakers">Bookmakers</a>
+      <a href="index.html#articles">Articles</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <span class="age" title="Adults only">18+</span>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <span class="kick">Monthly report</span>
+      <h1 id="title">Monthly Results</h1>
+      <p id="sub"></p>
+      <div class="months" id="months"></div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="head"><div><h2>Performance Report</h2><p>Profit is counted in units: 1 unit staked on every tip. A win pays odds minus 1, a loss costs 1.</p></div></div>
+      <div class="stats" id="stats1"></div>
+      <div class="stats" id="stats2"></div>
+      <div class="grid2">
+        <div class="panel chart"><h3>Profit Over the Month</h3><div id="chart"></div></div>
+        <div class="panel"><h3>Highlights</h3><div class="hl" id="highlights"></div></div>
+      </div>
+      <div class="panel" style="margin-top:24px"><h3>Every Tip in Order</h3><div class="form" id="form"></div><p class="note">Oldest on the left, newest on the right. Green is a win, red is a loss.</p></div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <div class="head"><div><h2>Breakdown</h2><p>Where the wins came from: by league, by type of tip and by day.</p></div></div>
+      <div class="grid2 even" style="margin-top:0">
+        <div class="panel"><h3>By League</h3><div class="scroll capped"><table><thead><tr><th>League</th><th class="n">Tips</th><th class="n">W-L</th><th>Win rate</th><th class="n">Profit</th></tr></thead><tbody id="byLeague"></tbody></table></div></div>
+        <div class="panel"><h3>By Type of Tip</h3><div class="scroll"><table><thead><tr><th>Tip type</th><th class="n">Tips</th><th class="n">W-L</th><th>Win rate</th><th class="n">Profit</th></tr></thead><tbody id="byMarket"></tbody></table></div></div>
+      </div>
+      <div class="panel" style="margin-top:24px"><h3>Day by Day</h3><div class="scroll capped"><table><thead><tr><th>Date</th><th class="n">Tips</th><th class="n">W-L</th><th>Win rate</th><th class="n">Profit</th></tr></thead><tbody id="byDay"></tbody></table></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="head"><div><h2>Booking Codes</h2><p>How the month's booking codes finished.</p></div></div>
+      <div class="bk-sum" id="bkSum"></div>
+      <div class="scroll capped"><table style="min-width:560px"><thead><tr><th>Date</th><th>Bookmaker</th><th class="n">Games</th><th class="n">Odds</th><th>Code</th><th>Result</th></tr></thead><tbody id="bkRows"></tbody></table></div>
+    </div>
+  </section>
+
+  <section class="alt" id="all">
+    <div class="wrap">
+      <div class="head">
+        <div><h2>All Results</h2><p id="allIntro">Every settled tip of the month, newest first.</p></div>
+        <div class="chips" id="filters"></div>
+      </div>
+      <div class="scroll" id="allScroll"><table>
+        <thead><tr><th>Date</th><th>Match</th><th>Tip</th><th>Odds</th><th>Score</th><th>Result</th></tr></thead>
+        <tbody id="allRows"></tbody>
+      </table></div>
+      <p style="margin:28px 0 0"><a class="back" href="index.html#results">&larr; Back to this month's results</a></p>
+    </div>
+  </section>
+</main>
+
+<div class="rg">
+  <div class="wrap">
+    <span class="age">18+</span>
+    <div><h2>Bet With Money You Can Afford to Lose</h2>
+    <p>Tips are opinions, not guarantees. Past results do not promise future wins. Set a budget before you play, never chase losses, and take a break if betting stops being fun. Betting is for adults aged 18 and over only.</p></div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div><img class="foot-logo" src="images/wakubet-logo-light.webp" alt="Wakubet"><br>Football Tips and Bookmaker Reviews</div>
+    <div>Reviews: <a href="index.html#review-1xbet">1xBet</a> · <a href="index.html#review-betway">Betway</a> · <a href="index.html#review-1win">1Win</a> · <a href="index.html#review-betwinner">Betwinner</a> · <a href="index.html#review-melbet">Melbet</a> · <a href="index.html#review-paripesa">Paripesa</a></div>
+    <div><a href="contact.html">Contact Us</a></div>
+    <p class="disc">Affiliate disclosure: this site earns a commission when you register with a bookmaker through its links. Bonus offers change and differ by country, so always check the terms on the bookmaker's site. Only bet with operators that are licensed and available where you live. 18+ only.</p>
+  </div>
+</footer>
+
+<script>/* load fresh data on every visit */
+(function(){var v=Math.floor(Date.now()/60000);document.write('<script src="data.js?v='+v+'"><\/script>');})();</script>
+<script>
+(function(){
+  const btn=document.getElementById("burger"), nav=document.getElementById("mainNav");
+  const set=open=>{nav.classList.toggle("open",open);btn.setAttribute("aria-expanded",open);btn.setAttribute("aria-label",open?"Close menu":"Open menu");};
+  btn.onclick=()=>set(!nav.classList.contains("open"));
+  document.addEventListener("keydown",e=>{if(e.key==="Escape")set(false);});
+  document.addEventListener("click",e=>{if(!e.target.closest("header"))set(false);});
+})();
+
+(function(){
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmtDate = (d,opt={day:"numeric",month:"short"}) => new Date(d+"T12:00:00").toLocaleDateString("en-GB",opt);
+const monthName = m => new Date(m+"-15T12:00:00").toLocaleDateString("en-GB",{month:"long",year:"numeric"});
+const profitOf = r => r.result==="won" ? r.odds-1 : r.result==="lost" ? -1 : 0;
+const sign = n => (n>0?"+":"")+n.toFixed(2);
+const pct = (a,b) => b ? a/b*100 : 0;
+const BOOKS = {"1xbet":"1xBet","betway":"Betway","1win":"1Win","betwinner":"Betwinner","melbet":"Melbet","paripesa":"Paripesa"};
+const LOGO = id => `images/${id}.webp`;
+
+const ALL = typeof RESULTS!=="undefined" ? RESULTS : [];
+const BKR = typeof BOOKING_RESULTS!=="undefined" ? BOOKING_RESULTS : [];
+const CUR = ((typeof TIPS!=="undefined" && TIPS[0] && TIPS[0].date) || (ALL[0] && ALL[0].date) || new Date().toISOString()).slice(0,7);
+const MONTHS = [...new Set(ALL.map(r=>r.date.slice(0,7)))].sort().reverse();
+const past = MONTHS.filter(m=>m<CUR);
+let M = new URLSearchParams(location.search).get("m");
+if(!MONTHS.includes(M)) M = past[0] || MONTHS[0] || CUR;
+
+// newest first (same order as data.js), and chronological copy
+const rows = ALL.filter(r=>r.date.slice(0,7)===M);
+const chrono = [...rows].reverse();
+const settled = rows.filter(r=>r.result!=="void");
+const won = rows.filter(r=>r.result==="won").length, lost = rows.filter(r=>r.result==="lost").length;
+const profit = rows.reduce((a,r)=>a+profitOf(r),0);
+const roi = pct(profit, rows.length);
+const avgOdds = rows.length ? rows.reduce((a,r)=>a+r.odds,0)/rows.length : 0;
+const wonRows = rows.filter(r=>r.result==="won");
+const avgWonOdds = wonRows.length ? wonRows.reduce((a,r)=>a+r.odds,0)/wonRows.length : 0;
+const name = monthName(M), inProgress = M>=CUR;
+
+document.title = `${name} Results and Performance Report | Wakubet`;
+$("#title").textContent = `${name} Results`;
+$("#sub").textContent = inProgress
+  ? `This month is still running. Here is every tip settled so far in ${name}, with the performance report.`
+  : `Every tip we posted in ${name}, with its final result and the full performance report for the month.`;
+const navMonths = past.includes(M) ? past : [M,...past];
+$("#months").innerHTML = navMonths.length>1 ? navMonths.map(m=>`<a href="?m=${m}"${m===M?' aria-current="page"':""}>${monthName(m)}</a>`).join("") : "";
+
+// streaks
+function streak(type){ let best=0,run=0,bestEnd=null; chrono.forEach(r=>{ if(r.result===type){run++; if(run>best){best=run;bestEnd=r.date;}} else if(r.result!=="void") run=0; }); return {best,end:bestEnd}; }
+const winS = streak("won"), lossS = streak("lost");
+
+// days
+const days = [...new Set(chrono.map(r=>r.date))].map(d=>{ const rs=rows.filter(r=>r.date===d), w=rs.filter(r=>r.result==="won").length, l=rs.filter(r=>r.result==="lost").length; return {d, n:rs.length, w, l, p:rs.reduce((a,r)=>a+profitOf(r),0)}; });
+const bestDay = [...days].sort((a,b)=>b.p-a.p)[0], worstDay = [...days].sort((a,b)=>a.p-b.p)[0];
+const perfect = days.filter(x=>x.l===0 && x.w>0).length, greenDays = days.filter(x=>x.p>0).length;
+let dayStreak=0,run=0; days.forEach(x=>{ if(x.p>0){run++;dayStreak=Math.max(dayStreak,run);} else run=0; });
+const topOdds = [...wonRows].sort((a,b)=>b.odds-a.odds)[0];
+
+// month bookings
+const bk = BKR.filter(b=>b.date.slice(0,7)===M);
+const bkWon = bk.filter(b=>b.result==="won").length;
+
+$("#stats1").innerHTML = `
+  <div><span class="num">${rows.length}</span><small>Tips settled</small></div>
+  <div><span class="num">${pct(won,settled.length).toFixed(1)}%</span><small>Win rate (${won} won, ${lost} lost)</small></div>
+  <div><span class="num ${profit>=0?"pos":"neg"}">${sign(profit)}u</span><small>Profit for the month</small></div>
+  <div><span class="num ${roi>=0?"pos":"neg"}">${sign(roi)}%</span><small>ROI, avg odds ${avgOdds.toFixed(2)}</small></div>`;
+$("#stats2").innerHTML = `
+  <div><span class="num pos">${winS.best}</span><small>Best winning streak (tips in a row)</small></div>
+  <div><span class="num neg">${lossS.best}</span><small>Longest losing streak</small></div>
+  <div><span class="num">${days.length}</span><small>Match days, ${greenDays} in profit</small></div>
+  <div><span class="num">${bk.length?pct(bkWon,bk.length).toFixed(0)+"%":"–"}</span><small>Booking codes won (${bkWon} of ${bk.length})</small></div>`;
+
+$("#highlights").innerHTML = [
+  ["Best day", bestDay ? `${fmtDate(bestDay.d,{weekday:"short",day:"numeric",month:"short"})} · ${bestDay.w}-${bestDay.l} · ${sign(bestDay.p)}u` : "–"],
+  ["Toughest day", worstDay ? `${fmtDate(worstDay.d,{weekday:"short",day:"numeric",month:"short"})} · ${worstDay.w}-${worstDay.l} · ${sign(worstDay.p)}u` : "–"],
+  ["Perfect days (no losses)", `${perfect} of ${days.length}`],
+  ["Most profitable days in a row", `${dayStreak}`],
+  ["Biggest winning odds", topOdds ? `${topOdds.odds.toFixed(2)} · ${esc(topOdds.home)} - ${esc(topOdds.away)}` : "–"],
+  ["Average odds of winning tips", avgWonOdds ? avgWonOdds.toFixed(2) : "–"],
+  ["Best winning streak ended", winS.end ? fmtDate(winS.end,{day:"numeric",month:"short"}) : "–"],
+].map(([k,v])=>`<div><span>${k}</span><b>${v}</b></div>`).join("");
+
+$("#form").innerHTML = chrono.map(r=>`<span style="background:var(--${r.result==="won"?"win":r.result==="lost"?"loss":"void"})" title="${fmtDate(r.date)}: ${esc(r.home)} - ${esc(r.away)}, ${esc(r.tip)} (${r.result})">${r.result[0].toUpperCase()}</span>`).join("") || `<p class="empty">No tips this month.</p>`;
+
+// chart
+(function(){
+  const pts=[0]; chrono.forEach(r=>pts.push(pts[pts.length-1]+profitOf(r)));
+  const W=640,H=260,pl=40,pr=12,pt=14,pb=28;
+  const min=Math.min(0,...pts), max=Math.max(1,...pts);
+  const x=i=>pl+i*(W-pl-pr)/(pts.length-1||1), y=v=>pt+(max-v)*(H-pt-pb)/(max-min||1);
+  const line=pts.map((v,i)=>`${i?"L":"M"}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join("");
+  const area=`${line}L${x(pts.length-1)},${y(min)}L${x(0)},${y(min)}Z`;
+  const ticks=[]; const step=Math.max(1,Math.ceil((max-min)/4)); for(let v=Math.floor(min);v<=max;v+=step)ticks.push(v);
+  $("#chart").innerHTML = chrono.length ? `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Cumulative profit for ${name}, ending at ${sign(profit)} units">
+    ${ticks.map(v=>`<line x1="${pl}" x2="${W-pr}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)" ${v===0?'stroke-width="2"':''}/><text x="${pl-8}" y="${y(v)+4}" text-anchor="end">${v}u</text>`).join("")}
+    <path d="${area}" fill="var(--pitch)" opacity=".1"/><path d="${line}" fill="none" stroke="var(--pitch)" stroke-width="3" stroke-linejoin="round"/>
+    <circle cx="${x(pts.length-1)}" cy="${y(pts[pts.length-1])}" r="5" fill="var(--card)" stroke="var(--pitch)" stroke-width="2"/>
+    <text x="${pl}" y="${H-6}">${fmtDate(chrono[0].date)}</text><text x="${W-pr}" y="${H-6}" text-anchor="end">${fmtDate(chrono[chrono.length-1].date)}</text></svg>` : `<p class="empty">No data.</p>`;
+})();
+
+// breakdown tables
+const rowHtml = (label, rs) => { const w=rs.filter(r=>r.result==="won").length, l=rs.filter(r=>r.result==="lost").length, p=rs.reduce((a,r)=>a+profitOf(r),0), h=pct(w,w+l);
+  return `<tr><td>${label}</td><td class="n">${rs.length}</td><td class="n">${w}-${l}</td><td class="bar-cell"><small>${h.toFixed(0)}%</small><i><b style="width:${h.toFixed(1)}%"></b></i></td><td class="n ${p>=0?"pos":"neg"}"><b>${sign(p)}u</b></td></tr>`; };
+const group = (keyFn) => { const g={}; rows.forEach(r=>{ const k=keyFn(r); (g[k]=g[k]||[]).push(r); }); return Object.entries(g).sort((a,b)=>b[1].length-a[1].length || a[0].localeCompare(b[0])); };
+$("#byLeague").innerHTML = group(r=>r.league).map(([k,rs])=>rowHtml(esc(k),rs)).join("");
+const market = t => /^DC/i.test(t) ? "Double chance" : /over/i.test(t) ? "Over goals" : /btts|^gg/i.test(t) ? "Both teams to score" : /to win$/i.test(t) ? "Match winner" : "Other";
+$("#byMarket").innerHTML = group(r=>market(r.tip)).map(([k,rs])=>rowHtml(k,rs)).join("");
+$("#byDay").innerHTML = [...days].reverse().map(x=>rowHtml(fmtDate(x.d,{weekday:"short",day:"numeric",month:"short"}), rows.filter(r=>r.date===x.d))).join("");
+
+// booking codes
+const bySite = {}; bk.forEach(b=>{ (bySite[b.bookmaker]=bySite[b.bookmaker]||[]).push(b); });
+$("#bkSum").innerHTML = Object.entries(bySite).map(([id,list])=>{ const w=list.filter(b=>b.result==="won").length; return `<article><img src="${LOGO(id)}" alt="${esc(BOOKS[id]||id)} logo"><div><b>${w} of ${list.length} won</b><span>${esc(BOOKS[id]||id)} · ${pct(w,list.length).toFixed(0)}% hit rate</span></div></article>`; }).join("") || `<p class="empty">No booking codes this month.</p>`;
+$("#bkRows").innerHTML = bk.map(b=>`<tr><td>${fmtDate(b.date)}</td><td>${esc(BOOKS[b.bookmaker]||b.bookmaker)}</td><td class="n">${b.games}</td><td class="n">${b.odds?b.odds.toFixed(2):"–"}</td><td><code>${esc(b.code)}</code></td><td><span class="pill ${b.result}">${b.result==="won"?"Won":"Lost"}</span></td></tr>`).join("");
+
+// all results with league filter
+const leagues = group(r=>r.league).map(([k])=>k);
+let cur = "All";
+function drawAll(){
+  const list = cur==="All" ? rows : rows.filter(r=>r.league===cur);
+  $("#allIntro").textContent = `${list.length} settled tip${list.length===1?"":"s"}${cur==="All"?"":" in "+cur}, newest first.`;
+  $("#allRows").innerHTML = list.map(r=>`<tr>
+    <td>${fmtDate(r.date)}</td>
+    <td class="match"><b>${esc(r.home)} - ${esc(r.away)}</b><span>${esc(r.league)}</span></td>
+    <td>${esc(r.tip)}</td><td class="odds">${r.odds.toFixed(2)}</td>
+    <td class="score">${esc(r.score)}</td><td><span class="pill ${r.result}">${r.result[0].toUpperCase()+r.result.slice(1)}</span></td></tr>`).join("") || `<tr><td colspan="6" class="empty">No results.</td></tr>`;
+  $("#allScroll").scrollTop = 0;
+}
+const fEl = $("#filters"), opts = ["All", ...leagues.slice(0,8)];
+function drawChips(){ fEl.innerHTML = opts.map(o=>`<button class="chip" aria-pressed="${o===cur}">${esc(o)}</button>`).join(""); fEl.querySelectorAll("button").forEach((b,i)=>b.onclick=()=>{cur=opts[i];drawChips();drawAll();}); }
+drawChips(); drawAll();
+})();
+</script>
+</body>
+</html>

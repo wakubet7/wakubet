@@ -106,6 +106,10 @@ section.alt{background:var(--soft)}
 .scroll{overflow-x:auto}
 #resScroll{overflow-y:auto;-webkit-overflow-scrolling:touch;border-bottom:1px solid var(--line)}
 #resScroll thead th{position:sticky;top:0;z-index:1;background:var(--soft)}
+.arch{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.arch .lbl{flex-basis:100%;font-size:14px;font-weight:600;color:var(--muted)}
+.arch a{background:var(--pitch);color:#fff}
+.arch a:hover{background:var(--pitch-2)}
 .scroll-hint{margin:8px 0 0;font-size:14px;color:var(--muted)}
 table{width:100%;border-collapse:collapse;min-width:680px}
 th{text-align:left;font-size:14px;color:var(--muted);font-weight:600;padding:10px 12px;border-bottom:2px solid var(--ink)}
@@ -343,16 +347,17 @@ header{border-bottom:3px solid var(--card)}
 .bk-card .btn:hover{background:var(--pitch-2)}
 .bk-promo{font-size:14px;color:var(--muted);text-align:center;margin:10px 0 0}
 .bk-promo b{color:var(--ink);cursor:pointer;text-decoration:underline dotted}
-.bkr-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.bkr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 @media (max-width:900px){.bkr-grid{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:420px){.bkr-grid{grid-template-columns:1fr}}
-.bkr{border:1px solid var(--line);border-left:4px solid var(--void);border-radius:8px;padding:14px;display:flex;flex-direction:column;gap:4px;font-size:15px}
-.bkr.won{border-left-color:var(--win)}.bkr.lost{border-left-color:var(--loss)}
-.bkr .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
-.bkr .top img{width:72px;aspect-ratio:16/9;object-fit:cover;border-radius:6px}
-.bkr span{color:var(--muted)}
-.bkr .pill{color:#fff}
-.bkr code{font-family:"Barlow Condensed",sans-serif;font-size:17px;font-weight:700;letter-spacing:1px;color:var(--ink)}
+@media (max-width:600px){.bkr-grid{grid-template-columns:1fr;gap:8px}}
+.bkr{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;padding:10px 12px 10px 10px;border:1px solid var(--line);border-left:4px solid var(--void);border-radius:10px;background:var(--bg);min-width:0}
+.bkr.won{border-left-color:var(--win);background:linear-gradient(90deg,rgba(31,157,85,.07),transparent 55%)}
+.bkr.lost{border-left-color:var(--loss);background:linear-gradient(90deg,rgba(210,59,59,.07),transparent 55%)}
+.bkr img{width:48px;aspect-ratio:16/9;object-fit:cover;border-radius:5px;display:block}
+.bkr .mid{display:flex;flex-direction:column;min-width:0;line-height:1.25}
+.bkr code{font-family:"Barlow Condensed",sans-serif;font-size:18px;font-weight:700;letter-spacing:.8px;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bkr .meta{font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bkr .pill{color:#fff;font-size:12px;padding:3px 9px}
 
 /* v12: hamburger menu on phones */
 .burger{display:none;width:44px;height:44px;border:0;background:transparent;cursor:pointer;padding:10px;flex-direction:column;justify-content:space-between;border-radius:8px}
@@ -442,7 +447,7 @@ section{padding:44px 0}
   <section id="results" class="alt">
     <div class="wrap">
       <div class="head">
-        <div><h2>Past results</h2><p>Settled tips, newest first. Nothing gets deleted.</p></div>
+        <div><h2>Past results</h2><p id="resIntro">Settled tips, newest first. Nothing gets deleted.</p></div>
         <div class="chips" id="resFilters"></div>
       </div>
       <div class="scroll" id="resScroll"><table>
@@ -450,12 +455,13 @@ section{padding:44px 0}
         <tbody id="resRows"></tbody>
       </table></div>
       <p class="scroll-hint" id="resHint"></p>
+      <div class="arch" id="resArchive"></div>
     </div>
   </section>
 
   <section id="booking-results">
     <div class="wrap">
-      <div class="head"><div><h2>Booking code results</h2><p>How past booking codes finished.</p></div></div>
+      <div class="head"><div><h2>Booking code results</h2><p id="bkrIntro">How past booking codes finished.</p></div></div>
       <div class="bkr-grid" id="bkrCards"></div>
       <div class="more" id="bkrMoreWrap"><button class="btn" id="bkrMoreBtn" aria-expanded="false"></button></div>
     </div>
@@ -463,10 +469,10 @@ section{padding:44px 0}
 
   <section id="performance" class="alt">
     <div class="wrap">
-      <div class="head"><div><h2>Performance</h2><p>Profit is counted in units: 1 unit staked on every tip. A win pays odds minus 1, a loss costs 1, a void returns the stake.</p></div></div>
+      <div class="head"><div><h2>Performance</h2><p id="perfIntro">Profit is counted in units: 1 unit staked on every tip. A win pays odds minus 1, a loss costs 1, a void returns the stake.</p></div></div>
       <div class="stats" id="stats"></div>
       <div class="perf">
-        <div class="panel chart"><h3>Profit over time</h3><div id="chart"></div></div>
+        <div class="panel chart"><h3>Profit this month</h3><div id="chart"></div></div>
         <div class="panel">
           <h3>Last 10 tips</h3><div class="form" id="form"></div>
           <h3>By league</h3><div id="leagues"></div>
@@ -726,6 +732,14 @@ chips($("#tipFilters"), leaguesOf(TIPS), l=>{tipsOpen=false;drawTips(l);}); draw
 $("#tipMoreBtn").onclick=()=>{ tipsOpen=!tipsOpen; drawTips(); if(!tipsOpen) $("#tips").scrollIntoView(); };
 
 let resLeague="All";
+const CUR_MONTH = ((TIPS[0]&&TIPS[0].date) || (RESULTS[0]&&RESULTS[0].date) || new Date().toISOString()).slice(0,7);
+const monthName = m => new Date(m+"-15T12:00:00").toLocaleDateString("en-GB",{month:"long",year:"numeric"});
+const MONTH_RESULTS = RESULTS.filter(r=>r.date.slice(0,7)===CUR_MONTH);
+$("#resIntro").textContent = `Settled tips for ${monthName(CUR_MONTH)}, newest first. Earlier months are saved in the monthly reports below.`;
+(function(){
+  const past=[...new Set(RESULTS.map(r=>r.date.slice(0,7)))].filter(m=>m<CUR_MONTH).sort().reverse();
+  $("#resArchive").innerHTML = past.length ? `<span class="lbl">Monthly results and performance reports</span>`+past.map(m=>`<a class="btn" href="monthly-results.html?m=${m}">${monthName(m)} results and performance report &rarr;</a>`).join("") : "";
+})();
 function fitResults(){
   const box=$("#resScroll"); if(!box) return;
   const head=box.querySelector("thead"), trs=[...box.querySelectorAll("tbody tr")];
@@ -735,7 +749,7 @@ function fitResults(){
   box.style.maxHeight=Math.ceil(h)+"px";
 }
 function drawResults(){
-  const rows = RESULTS.filter(r=>inGroup(r,resLeague));
+  const rows = MONTH_RESULTS.filter(r=>inGroup(r,resLeague));
   $("#resHint").textContent = rows.length>RESULTS_LIMIT ? `Showing ${rows.length} results. Scroll the table to see older ones.` : "";
   $("#resScroll").scrollTop=0;
   $("#resRows").innerHTML = rows.map(r=>`<tr>
@@ -743,37 +757,43 @@ function drawResults(){
     <td class="match"><b>${esc(r.home)} - ${esc(r.away)}</b><span>${esc(r.league)}</span></td>
     <td>${esc(r.tip)}</td><td class="odds">${r.odds.toFixed(2)}</td>
     <td class="score">${esc(r.score)}</td><td><span class="pill ${r.result}">${r.result[0].toUpperCase()+r.result.slice(1)}</span></td></tr>`).join("")
-    || `<tr><td colspan="6" class="empty">No settled tips for this league yet.</td></tr>`;
+    || `<tr><td colspan="6" class="empty">No settled tips ${resLeague==="All"?"yet this month":"for this league this month"}.</td></tr>`;
   fitResults();
 }
-chips($("#resFilters"), leaguesOf(RESULTS), l=>{resLeague=l;drawResults();});
+chips($("#resFilters"), leaguesOf(MONTH_RESULTS), l=>{resLeague=l;drawResults();});
 window.addEventListener("resize", fitResults); window.addEventListener("load", fitResults);
 drawResults();
 
-// performance
+// performance (current month only; earlier months live in the monthly reports)
+(function(){
+const PR = MONTH_RESULTS, pSet = PR.filter(r=>r.result!=="void");
+const pWon = PR.filter(r=>r.result==="won").length, pLost = PR.filter(r=>r.result==="lost").length;
+const pProfit = PR.reduce((a,r)=>a+profitOf(r),0), pHit = pSet.length ? pWon/pSet.length*100 : 0;
+const pRoi = PR.length ? pProfit/PR.length*100 : 0, pAvg = PR.reduce((a,r)=>a+r.odds,0)/(PR.length||1);
+$("#perfIntro").textContent = `Performance for ${monthName(CUR_MONTH)}. Profit is counted in units: 1 unit staked on every tip. A win pays odds minus 1, a loss costs 1, a void returns the stake.`;
 $("#stats").innerHTML = `
-  <div><span class="num">${RESULTS.length}</span><small>Tips settled</small></div>
-  <div><span class="num">${hit.toFixed(1)}%</span><small>Hit rate (${won} won, ${lost} lost)</small></div>
-  <div><span class="num ${profit>=0?"pos":"neg"}">${sign(profit)}u</span><small>Total profit</small></div>
-  <div><span class="num ${roi>=0?"pos":"neg"}">${sign(roi)}%</span><small>ROI, avg odds ${avgOdds.toFixed(2)}</small></div>`;
-$("#form").innerHTML = RESULTS.slice(0,10).map(r=>`<span style="background:var(--${r.result==="won"?"win":r.result==="lost"?"loss":"void"})" title="${esc(r.home)} - ${esc(r.away)}">${r.result[0].toUpperCase()}</span>`).join("");
-$("#leagues").innerHTML = leaguesOf().filter(l=>RESULTS.some(r=>groupOf(r.league)===l)).map(l=>{
-  const rs=RESULTS.filter(r=>groupOf(r.league)===l), w=rs.filter(r=>r.result==="won").length, s=rs.filter(r=>r.result!=="void").length, p=rs.reduce((a,r)=>a+profitOf(r),0);
+  <div><span class="num">${PR.length}</span><small>Tips settled this month</small></div>
+  <div><span class="num">${pHit.toFixed(1)}%</span><small>Hit rate (${pWon} won, ${pLost} lost)</small></div>
+  <div><span class="num ${pProfit>=0?"pos":"neg"}">${sign(pProfit)}u</span><small>Profit this month</small></div>
+  <div><span class="num ${pRoi>=0?"pos":"neg"}">${sign(pRoi)}%</span><small>ROI, avg odds ${pAvg.toFixed(2)}</small></div>`;
+$("#form").innerHTML = PR.slice(0,10).map(r=>`<span style="background:var(--${r.result==="won"?"win":r.result==="lost"?"loss":"void"})" title="${esc(r.home)} - ${esc(r.away)}">${r.result[0].toUpperCase()}</span>`).join("") || `<p class="empty" style="padding:0">No tips settled yet this month.</p>`;
+$("#leagues").innerHTML = leaguesOf().filter(l=>PR.some(r=>groupOf(r.league)===l)).map(l=>{
+  const rs=PR.filter(r=>groupOf(r.league)===l), w=rs.filter(r=>r.result==="won").length, s=rs.filter(r=>r.result!=="void").length, p=rs.reduce((a,r)=>a+profitOf(r),0);
   return `<div class="league-row"><b>${esc(l)}</b><span>${w}/${s}</span><span class="${p>=0?"pos":"neg"}">${sign(p)}u</span></div>`;
 }).join("");
-(function chart(){
-  const pts=[0]; [...RESULTS].reverse().forEach(r=>pts.push(pts[pts.length-1]+profitOf(r)));
-  const W=640,H=260,pl=40,pr=12,pt=14,pb=28;
-  const min=Math.min(0,...pts), max=Math.max(1,...pts);
-  const x=i=>pl+i*(W-pl-pr)/(pts.length-1||1), y=v=>pt+(max-v)*(H-pt-pb)/(max-min||1);
-  const line=pts.map((v,i)=>`${i?"L":"M"}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join("");
-  const area=`${line}L${x(pts.length-1)},${y(min)}L${x(0)},${y(min)}Z`;
-  const ticks=[]; const step=Math.max(1,Math.ceil((max-min)/4)); for(let v=Math.floor(min);v<=max;v+=step)ticks.push(v);
-  $("#chart").innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Cumulative profit in units, ending at ${sign(profit)}">
-    ${ticks.map(v=>`<line x1="${pl}" x2="${W-pr}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)" ${v===0?'stroke-width="2"':''}/><text x="${pl-8}" y="${y(v)+4}" text-anchor="end">${v}u</text>`).join("")}
-    <path d="${area}" fill="var(--pitch)" opacity=".1"/><path d="${line}" fill="none" stroke="var(--pitch)" stroke-width="3" stroke-linejoin="round"/>
-    <circle cx="${x(pts.length-1)}" cy="${y(pts[pts.length-1])}" r="5" fill="var(--card)" stroke="var(--pitch)" stroke-width="2"/>
-    <text x="${pl}" y="${H-6}">${fmtDate(RESULTS[RESULTS.length-1]?.date||"2026-01-01")}</text><text x="${W-pr}" y="${H-6}" text-anchor="end">${fmtDate(RESULTS[0]?.date||"2026-01-01")}</text></svg>`;
+const pts=[0]; [...PR].reverse().forEach(r=>pts.push(pts[pts.length-1]+profitOf(r)));
+const W=640,H=260,pl=40,pr=12,pt=14,pb=28;
+const min=Math.min(0,...pts), max=Math.max(1,...pts);
+const x=i=>pl+i*(W-pl-pr)/(pts.length-1||1), y=v=>pt+(max-v)*(H-pt-pb)/(max-min||1);
+const line=pts.map((v,i)=>`${i?"L":"M"}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join("");
+const area=`${line}L${x(pts.length-1)},${y(min)}L${x(0)},${y(min)}Z`;
+const ticks=[]; const step=Math.max(1,Math.ceil((max-min)/4)); for(let v=Math.floor(min);v<=max;v+=step)ticks.push(v);
+const first=PR[PR.length-1]?.date||CUR_MONTH+"-01", last=PR[0]?.date||first;
+$("#chart").innerHTML = PR.length ? `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Cumulative profit for ${monthName(CUR_MONTH)} in units, ending at ${sign(pProfit)}">
+  ${ticks.map(v=>`<line x1="${pl}" x2="${W-pr}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)" ${v===0?'stroke-width="2"':''}/><text x="${pl-8}" y="${y(v)+4}" text-anchor="end">${v}u</text>`).join("")}
+  <path d="${area}" fill="var(--pitch)" opacity=".1"/><path d="${line}" fill="none" stroke="var(--pitch)" stroke-width="3" stroke-linejoin="round"/>
+  <circle cx="${x(pts.length-1)}" cy="${y(pts[pts.length-1])}" r="5" fill="var(--card)" stroke="var(--pitch)" stroke-width="2"/>
+  <text x="${pl}" y="${H-6}">${fmtDate(first)}</text><text x="${W-pr}" y="${H-6}" text-anchor="end">${fmtDate(last)}</text></svg>` : `<p class="empty">The chart starts after the first results of the month.</p>`;
 })();
 
 // booking code cards
@@ -794,15 +814,16 @@ $("#bkCards").innerHTML = !ALL_CODES.length ? `<p class="bk-empty">New booking c
 
 // booking code results
 const phoneMQ = window.matchMedia("(max-width:760px)");
-const bkrLimit = () => phoneMQ.matches ? 5 : 8; let bkrOpen=false;
+const bkrLimit = () => phoneMQ.matches ? 4 : 6; let bkrOpen=false;
+const MONTH_BKR = BOOKING_RESULTS.filter(t=>t.date.slice(0,7)===CUR_MONTH);
+$("#bkrIntro").textContent = `How the booking codes for ${monthName(CUR_MONTH)} finished, newest first. Earlier months are in the monthly reports.`;
 function drawBkr(){
-  const lim = bkrLimit(), rows = bkrOpen ? BOOKING_RESULTS : BOOKING_RESULTS.slice(0,lim);
-  expandBtn($("#bkrMoreWrap"), $("#bkrMoreBtn"), BOOKING_RESULTS.length, lim, bkrOpen, "results");
+  const lim = bkrLimit(), rows = bkrOpen ? MONTH_BKR : MONTH_BKR.slice(0,lim);
+  expandBtn($("#bkrMoreWrap"), $("#bkrMoreBtn"), MONTH_BKR.length, lim, bkrOpen, "results");
   $("#bkrCards").innerHTML = rows.map(t=>{ const b=BM[t.bookmaker]; return `<article class="bkr ${t.result}">
-    <div class="top"><img src="${LOGOS[t.bookmaker]}" alt="${esc(b?b.name:t.bookmaker)}"><span class="pill ${t.result}">${t.result==="won"?"Won":"Lost"}</span></div>
-    <b>${fmtDate(t.date,{day:"numeric",month:"short",year:"numeric"})}</b>
-    <span>${t.games} games${t.odds?` · odds ${t.odds.toFixed(2)}`:""}</span>
-    <code>${esc(t.code)}</code></article>`; }).join("") || `<p class="empty">No booking code results yet.</p>`;
+    <img src="${LOGOS[t.bookmaker]}" alt="${esc(b?b.name:t.bookmaker)}" loading="lazy">
+    <div class="mid"><code>${esc(t.code)}</code><span class="meta">${fmtDate(t.date)} · ${t.games} games${t.odds?` · odds ${t.odds.toFixed(2)}`:""}</span></div>
+    <span class="pill ${t.result}">${t.result==="won"?"Won":"Lost"}</span></article>`; }).join("") || `<p class="empty">No booking code results yet this month.</p>`;
 }
 drawBkr();
 phoneMQ.addEventListener ? phoneMQ.addEventListener("change",drawBkr) : phoneMQ.addListener(drawBkr);
