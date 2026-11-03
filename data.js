@@ -9,7 +9,7 @@ const TICKET = { bookmaker:"1xbet", date:"2026-11-03", bookingCode:"GTU7N", pick
 ]};
 
 // Bookmaker of the month
-const BOOK_OF_MONTH = { id:"1xbet", month:"October 2026", image:"images/1xbet-banner.webp",
+const BOOK_OF_MONTH = { id:"1xbet", month:"November 2026", image:"images/1xbet-banner.webp",
   reason:"The bookmaker I used most for this month's tickets: the deepest football markets, booking codes that load in one tap, and the biggest first-deposit bonus of my six partners." };
 
 

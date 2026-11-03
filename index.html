@@ -692,7 +692,7 @@ $("#heroRecord").innerHTML = `
 (function(){
   const b = BM[BOOK_OF_MONTH.id]; if(!b){ $("#botm-section").remove(); return; }
   $("#botm").innerHTML = `<div class="botm-img"><img src="${BOOK_OF_MONTH.image||LOGOS[b.id]}" alt="${esc(b.name)}, bookmaker of the month"></div>
-    <div class="in"><span class="month">Bookmaker of the month, ${esc(BOOK_OF_MONTH.month)}</span>
+    <div class="in"><span class="month">Bookmaker of the month, ${esc(new Date((((TIPS[0]&&TIPS[0].date)||new Date().toISOString()).slice(0,7))+"-15T12:00:00").toLocaleDateString("en-GB",{month:"long",year:"numeric"}))}</span>
       <h3>${esc(b.name)}</h3><p>${esc(BOOK_OF_MONTH.reason)}</p>
       <p><strong style="color:var(--ink)">${esc(b.offer)}</strong></p>
       <div class="acts">${codeBox(b.promo)}<a class="btn" href="${esc(b.link)}" target="_blank" rel="sponsored noopener">Join ${esc(b.name)}</a><a class="rv" href="#review-${b.id}">Read the full review</a></div>
