@@ -2,10 +2,10 @@
 // today's ticket and bookmaker of the month. Dates use YYYY-MM-DD.
 
 // Today's ticket on the hero. It is also shown automatically as the first booking code card.
-const TICKET = { bookmaker:"1xbet", date:"2026-11-11", bookingCode:"4JP5L", picks:[
-  {time:"14:00", league:"U19 Euro Qualifiers", home:"Ukraine U19", away:"Israel U19", tip:"GG - Both Teams to Score - Yes", odds:1.63},
-  {time:"15:30", league:"U19 Euro Qualifiers", home:"Albania U19", away:"Cyprus U19", tip:"GG - Both Teams to Score - Yes", odds:1.65},
-  {time:"20:45", league:"Women's Champions League", home:"Oud-Heverlee Leuven (W)", away:"HB Koge (W)", tip:"2 - HB Koge (W) to Win", odds:1.53}
+const TICKET = { bookmaker:"1xbet", date:"2026-11-12", bookingCode:"79YB5", picks:[
+  {time:"18:00", league:"International Friendly", home:"Uzbekistan", away:"Russia", tip:"2 - Russia to Win", odds:1.90},
+  {time:"20:30", league:"International Friendly", home:"Malta", away:"Eswatini", tip:"1 - Malta to Win", odds:1.46},
+  {time:"22:45", league:"UEFA Nations League", home:"Albania", away:"Finland", tip:"GG - Both Teams to Score - Yes", odds:1.76}
 ]};
 
 // Bookmaker of the month
@@ -15,12 +15,15 @@ const BOOK_OF_MONTH = { id:"1xbet", month:"November 2026", image:"images/1xbet-b
 
 // Booking codes: up to 3 shown as cards. odds is optional.
 const BOOKING_CODES = [
-  { bookmaker:"betway", date:"2026-11-11", games:4, odds:5.92, code:"BW81D7EFB6" },
-  { bookmaker:"1win", date:"2026-11-11", games:6, odds:17.60, code:"zr1XSz7a" }
+  { bookmaker:"betway", date:"2026-11-12", games:4, odds:6.95, code:"BW82056327" },
+  { bookmaker:"1win", date:"2026-11-12", games:5, odds:21.80, code:"Zy1CH97c" }
 ];
 
 // Booking code results, newest first. result: "won" | "lost"
 const BOOKING_RESULTS = [
+  { bookmaker:"1xbet", date:"2026-11-11", games:3, odds:4.11, code:"4JP5L", result:"lost" },
+  { bookmaker:"betway", date:"2026-11-11", games:4, odds:5.92, code:"BW81D7EFB6", result:"lost" },
+  { bookmaker:"1win", date:"2026-11-11", games:6, odds:17.60, code:"zr1XSz7a", result:"won" },
   { bookmaker:"1xbet", date:"2026-11-10", games:3, odds:4.96, code:"KBL84", result:"lost" },
   { bookmaker:"betway", date:"2026-11-10", games:4, odds:6.26, code:"BW81AA0394", result:"lost" },
   { bookmaker:"1win", date:"2026-11-10", games:7, odds:38.58, code:"GGGrZH40", result:"won" },
@@ -121,22 +124,34 @@ const MAIN_LEAGUES = ["Premier League","La Liga","Serie A","Bundesliga","Ligue 1
 
 // Upcoming tips. confidence: 1–5. featured: true puts it on the hero betslip.
 const TIPS = [
-  {date:"2026-11-11", time:"12:30", league:"SAFF Championship", home:"India", away:"Maldives", tip:"Over 2.5", odds:1.41, confidence:3},
-  {date:"2026-11-11", time:"12:30", league:"Persha Liga", home:"FC Chernihiv", away:"Inhulets", tip:"Over 1.5", odds:1.25, confidence:3},
-  {date:"2026-11-11", time:"13:00", league:"J. League Cup", home:"Kawasaki Frontale", away:"Kashiwa Reysol", tip:"DC 12", odds:1.25, confidence:3},
-  {date:"2026-11-11", time:"13:00", league:"J. League Cup", home:"Vissel Kobe", away:"Machida", tip:"Over 1.5", odds:1.31, confidence:3},
-  {date:"2026-11-11", time:"13:00", league:"J. League Cup", home:"Yokohama F. Marinos", away:"Kashima Antlers", tip:"Over 1.5", odds:1.20, confidence:3},
-  {date:"2026-11-11", time:"13:30", league:"J. League Cup", home:"Urawa Reds", away:"Cerezo Osaka", tip:"DC 1X", odds:1.25, confidence:3},
-  {date:"2026-11-11", time:"14:30", league:"Belarusian Cup", home:"Orsha", away:"BATE", tip:"BATE to Win", odds:1.17, confidence:3},
-  {date:"2026-11-11", time:"16:30", league:"Belgian Nationale 1", home:"Onhaye", away:"Habay La Neuve", tip:"DC 12", odds:1.27, confidence:3},
-  {date:"2026-11-11", time:"17:00", league:"SAFF Championship", home:"Bangladesh", away:"Sri Lanka", tip:"DC 12", odds:1.29, confidence:3},
-  {date:"2026-11-11", time:"18:00", league:"Slovak Cup", home:"Podbrezova", away:"Zlate Moravce", tip:"Podbrezova to Win", odds:1.21, confidence:3},
-  {date:"2026-11-11", time:"20:00", league:"Cameroon Elite 1", home:"Colombe", away:"Victoria United", tip:"Colombe to Win", odds:1.26, confidence:3},
-  {date:"2026-11-11", time:"20:00", league:"MOL Cup", home:"Artis Brno", away:"Jablonec", tip:"Over 1.5", odds:1.24, confidence:3}
+  {date:"2026-11-12", time:"19:00", league:"Africa Cup of Nations", home:"DR Congo", away:"Sierra Leone", tip:"DR Congo to Win", odds:1.23, confidence:3},
+  {date:"2026-11-12", time:"19:00", league:"Africa Cup of Nations", home:"Guinea", away:"Eritrea", tip:"Guinea to Win", odds:1.21, confidence:3},
+  {date:"2026-11-12", time:"20:00", league:"UEFA Nations League", home:"Turkey", away:"Belgium", tip:"DC X2", odds:1.25, confidence:3},
+  {date:"2026-11-12", time:"20:00", league:"UEFA Nations League", home:"Armenia", away:"Cyprus", tip:"Over 1.5", odds:1.32, confidence:3},
+  {date:"2026-11-12", time:"22:00", league:"Africa Cup of Nations", home:"Ivory Coast", away:"Gambia", tip:"Ivory Coast to Win", odds:1.20, confidence:3},
+  {date:"2026-11-12", time:"22:00", league:"Africa Cup of Nations", home:"Cameroon", away:"Namibia", tip:"Cameroon to Win", odds:1.30, confidence:3},
+  {date:"2026-11-12", time:"22:45", league:"UEFA Nations League", home:"England", away:"Croatia", tip:"England to Win", odds:1.17, confidence:3},
+  {date:"2026-11-12", time:"22:45", league:"UEFA Nations League", home:"Italy", away:"France", tip:"DC 12", odds:1.27, confidence:3},
+  {date:"2026-11-12", time:"22:45", league:"UEFA Nations League", home:"Czechia", away:"Spain", tip:"Spain to Win", odds:1.20, confidence:3},
+  {date:"2026-11-12", time:"22:45", league:"UEFA Nations League", home:"Montenegro", away:"Latvia", tip:"Over 1.5", odds:1.26, confidence:3},
+  {date:"2026-11-12", time:"22:45", league:"UEFA Nations League", home:"Albania", away:"Finland", tip:"DC 1X", odds:1.21, confidence:3},
+  {date:"2026-11-12", time:"22:45", league:"UEFA Nations League", home:"San Marino", away:"Belarus", tip:"Over 1.5", odds:1.20, confidence:3}
 ];
 
 // Settled tips. result: "won" | "lost" | "void"
 const RESULTS = [
+  {date:"2026-11-11", league:"SAFF Championship", home:"India", away:"Maldives", tip:"Over 2.5", odds:1.41, score:"1-0", result:"lost"},
+  {date:"2026-11-11", league:"Persha Liga", home:"FC Chernihiv", away:"Inhulets", tip:"Over 1.5", odds:1.25, score:"P-P", result:"void"},
+  {date:"2026-11-11", league:"J. League Cup", home:"Kawasaki Frontale", away:"Kashiwa Reysol", tip:"DC 12", odds:1.25, score:"1-2", result:"won"},
+  {date:"2026-11-11", league:"J. League Cup", home:"Vissel Kobe", away:"Machida", tip:"Over 1.5", odds:1.31, score:"0-1", result:"lost"},
+  {date:"2026-11-11", league:"J. League Cup", home:"Yokohama F. Marinos", away:"Kashima Antlers", tip:"Over 1.5", odds:1.20, score:"2-3", result:"won"},
+  {date:"2026-11-11", league:"J. League Cup", home:"Urawa Reds", away:"Cerezo Osaka", tip:"DC 1X", odds:1.25, score:"2-0", result:"won"},
+  {date:"2026-11-11", league:"Belarusian Cup", home:"Orsha", away:"BATE", tip:"BATE to Win", odds:1.17, score:"2-2", result:"lost"},
+  {date:"2026-11-11", league:"Belgian Nationale 1", home:"Onhaye", away:"Habay La Neuve", tip:"DC 12", odds:1.27, score:"1-0", result:"won"},
+  {date:"2026-11-11", league:"SAFF Championship", home:"Bangladesh", away:"Sri Lanka", tip:"DC 12", odds:1.29, score:"4-0", result:"won"},
+  {date:"2026-11-11", league:"Slovak Cup", home:"Podbrezova", away:"Zlate Moravce", tip:"Podbrezova to Win", odds:1.21, score:"2-0", result:"won"},
+  {date:"2026-11-11", league:"Cameroon Elite 1", home:"Colombe", away:"Victoria United", tip:"Colombe to Win", odds:1.26, score:"2-1", result:"won"},
+  {date:"2026-11-11", league:"MOL Cup", home:"Artis Brno", away:"Jablonec", tip:"Over 1.5", odds:1.24, score:"2-1", result:"won"},
   {date:"2026-11-10", league:"Algeria Ligue 2", home:"Djijel", away:"CR Beni Thour", tip:"DC 12", odds:1.21, score:"2-1", result:"won"},
   {date:"2026-11-10", league:"Algeria Ligue 2", home:"MO Bejaia", away:"Nezla", tip:"MO Bejaia to Win", odds:1.35, score:"2-1", result:"won"},
   {date:"2026-11-10", league:"Algeria Ligue 2", home:"Paradou", away:"Skikda", tip:"DC 12", odds:1.24, score:"1-0", result:"won"},
