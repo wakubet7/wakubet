@@ -2,10 +2,10 @@
 // today's ticket and bookmaker of the month. Dates use YYYY-MM-DD.
 
 // Today's ticket on the hero. It is also shown automatically as the first booking code card.
-const TICKET = { bookmaker:"1xbet", date:"2026-11-15", bookingCode:"UTJCT", picks:[
-  {time:"16:00", league:"La Liga 2", home:"Tenerife", away:"Ceuta", tip:"1 - Tenerife to Win", odds:1.67},
-  {time:"17:00", league:"UEFA Nations League", home:"Latvia", away:"Armenia", tip:"GG - Both Teams to Score - Yes", odds:1.72},
-  {time:"20:30", league:"La Liga 2", home:"Eibar", away:"Cadiz", tip:"1 - Eibar to Win", odds:1.53}
+const TICKET = { bookmaker:"1xbet", date:"2026-11-16", bookingCode:"ZJXTU", picks:[
+  {time:"17:00", league:"U20 Elite League", home:"Italy U20", away:"Switzerland U20", tip:"1 - Italy U20 to Win", odds:1.50},
+  {time:"20:00", league:"UEFA Nations League", home:"Estonia", away:"Bulgaria", tip:"GG - Both Teams to Score - Yes", odds:1.92},
+  {time:"22:45", league:"UEFA Nations League", home:"Greece", away:"Serbia", tip:"GG - Both Teams to Score - Yes", odds:1.60}
 ]};
 
 // Bookmaker of the month
@@ -15,12 +15,15 @@ const BOOK_OF_MONTH = { id:"1xbet", month:"November 2026", image:"images/1xbet-b
 
 // Booking codes: up to 3 shown as cards. odds is optional.
 const BOOKING_CODES = [
-  { bookmaker:"betway", date:"2026-11-15", games:5, odds:5.02, code:"BW82B41798" },
-  { bookmaker:"1win", date:"2026-11-15", games:7, odds:32.85, code:"bHSmKh49" }
+  { bookmaker:"betway", date:"2026-11-16", games:3, odds:3.41, code:"BW82E58AE7" },
+  { bookmaker:"1win", date:"2026-11-16", games:5, odds:19.16, code:"7sWOMYff" }
 ];
 
 // Booking code results, newest first. result: "won" | "lost"
 const BOOKING_RESULTS = [
+  { bookmaker:"1xbet", date:"2026-11-15", games:3, odds:4.39, code:"UTJCT", result:"lost" },
+  { bookmaker:"betway", date:"2026-11-15", games:5, odds:5.02, code:"BW82B41798", result:"won" },
+  { bookmaker:"1win", date:"2026-11-15", games:7, odds:32.85, code:"bHSmKh49", result:"won" },
   { bookmaker:"1xbet", date:"2026-11-14", games:3, odds:4.91, code:"AAC76", result:"lost" },
   { bookmaker:"betway", date:"2026-11-14", games:4, odds:4.36, code:"BW82875F1D", result:"won" },
   { bookmaker:"1win", date:"2026-11-14", games:6, odds:15.32, code:"4ZwIRf5", result:"won" },
@@ -133,22 +136,34 @@ const MAIN_LEAGUES = ["Premier League","La Liga","Serie A","Bundesliga","Ligue 1
 
 // Upcoming tips. confidence: 1–5. featured: true puts it on the hero betslip.
 const TIPS = [
-  {date:"2026-11-15", time:"16:00", league:"La Liga 2", home:"Tenerife", away:"Ceuta", tip:"Over 1.5", odds:1.30, confidence:3},
-  {date:"2026-11-15", time:"17:00", league:"UEFA Nations League", home:"Cyprus", away:"Montenegro", tip:"Over 1.5", odds:1.27, confidence:3},
-  {date:"2026-11-15", time:"17:00", league:"UEFA Nations League", home:"Latvia", away:"Armenia", tip:"DC 12", odds:1.33, confidence:3},
-  {date:"2026-11-15", time:"18:15", league:"La Liga 2", home:"Granada", away:"Las Palmas", tip:"DC 1X", odds:1.26, confidence:3},
-  {date:"2026-11-15", time:"20:00", league:"UEFA Nations League", home:"Belarus", away:"Albania", tip:"DC 12", odds:1.31, confidence:3},
-  {date:"2026-11-15", time:"20:00", league:"UEFA Nations League", home:"Finland", away:"San Marino", tip:"Over 2.5", odds:1.22, confidence:3},
-  {date:"2026-11-15", time:"20:30", league:"La Liga 2", home:"Eibar", away:"Cadiz", tip:"Over 1.5", odds:1.23, confidence:3},
-  {date:"2026-11-15", time:"20:30", league:"La Liga 2", home:"Eldense", away:"Sabadell", tip:"DC 12", odds:1.37, confidence:3},
-  {date:"2026-11-15", time:"22:45", league:"UEFA Nations League", home:"Belgium", away:"Italy", tip:"DC 12", odds:1.28, confidence:3},
-  {date:"2026-11-15", time:"22:45", league:"UEFA Nations League", home:"Croatia", away:"Czechia", tip:"Croatia to Win", odds:1.55, confidence:3},
-  {date:"2026-11-15", time:"22:45", league:"UEFA Nations League", home:"France", away:"Turkey", tip:"BTTS Yes", odds:1.77, confidence:3},
-  {date:"2026-11-15", time:"22:45", league:"UEFA Nations League", home:"Spain", away:"England", tip:"DC 12", odds:1.25, confidence:3}
+  {date:"2026-11-16", time:"16:00", league:"Africa Cup of Nations", home:"Sudan", away:"Senegal", tip:"Senegal to Win", odds:1.24, confidence:3},
+  {date:"2026-11-16", time:"16:00", league:"Africa Cup of Nations", home:"Zimbabwe", away:"Equatorial Guinea", tip:"DC 1X", odds:1.25, confidence:3},
+  {date:"2026-11-16", time:"16:00", league:"Africa Cup of Nations", home:"Namibia", away:"Cameroon", tip:"DC 12", odds:1.22, confidence:3},
+  {date:"2026-11-16", time:"18:00", league:"UEFA Nations League", home:"Faroe Islands", away:"Moldova", tip:"DC 12", odds:1.29, confidence:3},
+  {date:"2026-11-16", time:"18:00", league:"UEFA Nations League", home:"Kazakhstan", away:"Slovakia", tip:"Over 1.5", odds:1.31, confidence:3},
+  {date:"2026-11-16", time:"19:00", league:"Africa Cup of Nations", home:"Central African Republic", away:"Benin", tip:"DC 12", odds:1.21, confidence:3},
+  {date:"2026-11-16", time:"20:00", league:"UEFA Nations League", home:"Estonia", away:"Bulgaria", tip:"DC 1X", odds:1.25, confidence:3},
+  {date:"2026-11-16", time:"20:00", league:"UEFA Nations League", home:"Iceland", away:"Luxembourg", tip:"Iceland to Win", odds:1.25, confidence:3},
+  {date:"2026-11-16", time:"22:45", league:"UEFA Nations League", home:"Germany", away:"Netherlands", tip:"BTTS Yes", odds:1.40, confidence:3},
+  {date:"2026-11-16", time:"22:45", league:"UEFA Nations League", home:"Greece", away:"Serbia", tip:"DC 12", odds:1.20, confidence:3},
+  {date:"2026-11-16", time:"22:45", league:"UEFA Nations League", home:"North Macedonia", away:"Slovenia", tip:"DC 12", odds:1.23, confidence:3},
+  {date:"2026-11-16", time:"22:45", league:"UEFA Nations League", home:"Switzerland", away:"Scotland", tip:"Over 1.5", odds:1.34, confidence:3}
 ];
 
 // Settled tips. result: "won" | "lost" | "void"
 const RESULTS = [
+  {date:"2026-11-15", league:"La Liga 2", home:"Tenerife", away:"Ceuta", tip:"Over 1.5", odds:1.30, score:"2-0", result:"won"},
+  {date:"2026-11-15", league:"UEFA Nations League", home:"Cyprus", away:"Montenegro", tip:"Over 1.5", odds:1.27, score:"1-4", result:"won"},
+  {date:"2026-11-15", league:"UEFA Nations League", home:"Latvia", away:"Armenia", tip:"DC 12", odds:1.33, score:"0-0", result:"lost"},
+  {date:"2026-11-15", league:"La Liga 2", home:"Granada", away:"Las Palmas", tip:"DC 1X", odds:1.26, score:"1-0", result:"won"},
+  {date:"2026-11-15", league:"UEFA Nations League", home:"Belarus", away:"Albania", tip:"DC 12", odds:1.31, score:"0-2", result:"won"},
+  {date:"2026-11-15", league:"UEFA Nations League", home:"Finland", away:"San Marino", tip:"Over 2.5", odds:1.22, score:"7-2", result:"won"},
+  {date:"2026-11-15", league:"La Liga 2", home:"Eibar", away:"Cadiz", tip:"Over 1.5", odds:1.23, score:"1-1", result:"won"},
+  {date:"2026-11-15", league:"La Liga 2", home:"Eldense", away:"Sabadell", tip:"DC 12", odds:1.37, score:"2-0", result:"won"},
+  {date:"2026-11-15", league:"UEFA Nations League", home:"Belgium", away:"Italy", tip:"DC 12", odds:1.28, score:"4-1", result:"won"},
+  {date:"2026-11-15", league:"UEFA Nations League", home:"Croatia", away:"Czechia", tip:"Croatia to Win", odds:1.55, score:"2-1", result:"won"},
+  {date:"2026-11-15", league:"UEFA Nations League", home:"France", away:"Turkey", tip:"BTTS Yes", odds:1.77, score:"2-1", result:"won"},
+  {date:"2026-11-15", league:"UEFA Nations League", home:"Spain", away:"England", tip:"DC 12", odds:1.25, score:"2-3", result:"won"},
   {date:"2026-11-14", league:"UEFA Nations League", home:"Kosovo", away:"Israel", tip:"Over 1.5", odds:1.28, score:"0-0", result:"lost"},
   {date:"2026-11-14", league:"SAFF Championship", home:"Bangladesh", away:"Pakistan", tip:"DC 12", odds:1.22, score:"0-1", result:"won"},
   {date:"2026-11-14", league:"Africa Cup of Nations", home:"Uganda", away:"Botswana", tip:"DC 12", odds:1.24, score:"1-1", result:"lost"},
