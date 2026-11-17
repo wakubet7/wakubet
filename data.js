@@ -2,10 +2,10 @@
 // today's ticket and bookmaker of the month. Dates use YYYY-MM-DD.
 
 // Today's ticket on the hero. It is also shown automatically as the first booking code card.
-const TICKET = { bookmaker:"1xbet", date:"2026-11-16", bookingCode:"ZJXTU", picks:[
-  {time:"17:00", league:"U20 Elite League", home:"Italy U20", away:"Switzerland U20", tip:"1 - Italy U20 to Win", odds:1.50},
-  {time:"20:00", league:"UEFA Nations League", home:"Estonia", away:"Bulgaria", tip:"GG - Both Teams to Score - Yes", odds:1.92},
-  {time:"22:45", league:"UEFA Nations League", home:"Greece", away:"Serbia", tip:"GG - Both Teams to Score - Yes", odds:1.60}
+const TICKET = { bookmaker:"1xbet", date:"2026-11-17", bookingCode:"S8KTX", picks:[
+  {time:"22:45", league:"UEFA Nations League", home:"Ireland", away:"Kosovo", tip:"1 - Ireland to Win", odds:1.84},
+  {time:"22:45", league:"UEFA Nations League", home:"Ukraine", away:"Georgia", tip:"GG - Both Teams to Score - Yes", odds:1.79},
+  {time:"22:45", league:"UEFA Nations League", home:"Israel", away:"Austria", tip:"2 - Austria to Win", odds:1.61}
 ]};
 
 // Bookmaker of the month
@@ -15,12 +15,15 @@ const BOOK_OF_MONTH = { id:"1xbet", month:"November 2026", image:"images/1xbet-b
 
 // Booking codes: up to 3 shown as cards. odds is optional.
 const BOOKING_CODES = [
-  { bookmaker:"betway", date:"2026-11-16", games:3, odds:3.41, code:"BW82E58AE7" },
-  { bookmaker:"1win", date:"2026-11-16", games:5, odds:19.16, code:"7sWOMYff" }
+  { bookmaker:"betway", date:"2026-11-17", games:3, odds:4.21, code:"BW831601B4" },
+  { bookmaker:"1win", date:"2026-11-17", games:6, odds:38.52, code:"szQnvH35" }
 ];
 
 // Booking code results, newest first. result: "won" | "lost"
 const BOOKING_RESULTS = [
+  { bookmaker:"1xbet", date:"2026-11-16", games:3, odds:4.61, code:"ZJXTU", result:"lost" },
+  { bookmaker:"betway", date:"2026-11-16", games:3, odds:3.41, code:"BW82E58AE7", result:"won" },
+  { bookmaker:"1win", date:"2026-11-16", games:5, odds:19.16, code:"7sWOMYff", result:"won" },
   { bookmaker:"1xbet", date:"2026-11-15", games:3, odds:4.39, code:"UTJCT", result:"lost" },
   { bookmaker:"betway", date:"2026-11-15", games:5, odds:5.02, code:"BW82B41798", result:"won" },
   { bookmaker:"1win", date:"2026-11-15", games:7, odds:32.85, code:"bHSmKh49", result:"won" },
@@ -136,22 +139,34 @@ const MAIN_LEAGUES = ["Premier League","La Liga","Serie A","Bundesliga","Ligue 1
 
 // Upcoming tips. confidence: 1–5. featured: true puts it on the hero betslip.
 const TIPS = [
-  {date:"2026-11-16", time:"16:00", league:"Africa Cup of Nations", home:"Sudan", away:"Senegal", tip:"Senegal to Win", odds:1.24, confidence:3},
-  {date:"2026-11-16", time:"16:00", league:"Africa Cup of Nations", home:"Zimbabwe", away:"Equatorial Guinea", tip:"DC 1X", odds:1.25, confidence:3},
-  {date:"2026-11-16", time:"16:00", league:"Africa Cup of Nations", home:"Namibia", away:"Cameroon", tip:"DC 12", odds:1.22, confidence:3},
-  {date:"2026-11-16", time:"18:00", league:"UEFA Nations League", home:"Faroe Islands", away:"Moldova", tip:"DC 12", odds:1.29, confidence:3},
-  {date:"2026-11-16", time:"18:00", league:"UEFA Nations League", home:"Kazakhstan", away:"Slovakia", tip:"Over 1.5", odds:1.31, confidence:3},
-  {date:"2026-11-16", time:"19:00", league:"Africa Cup of Nations", home:"Central African Republic", away:"Benin", tip:"DC 12", odds:1.21, confidence:3},
-  {date:"2026-11-16", time:"20:00", league:"UEFA Nations League", home:"Estonia", away:"Bulgaria", tip:"DC 1X", odds:1.25, confidence:3},
-  {date:"2026-11-16", time:"20:00", league:"UEFA Nations League", home:"Iceland", away:"Luxembourg", tip:"Iceland to Win", odds:1.25, confidence:3},
-  {date:"2026-11-16", time:"22:45", league:"UEFA Nations League", home:"Germany", away:"Netherlands", tip:"BTTS Yes", odds:1.40, confidence:3},
-  {date:"2026-11-16", time:"22:45", league:"UEFA Nations League", home:"Greece", away:"Serbia", tip:"DC 12", odds:1.20, confidence:3},
-  {date:"2026-11-16", time:"22:45", league:"UEFA Nations League", home:"North Macedonia", away:"Slovenia", tip:"DC 12", odds:1.23, confidence:3},
-  {date:"2026-11-16", time:"22:45", league:"UEFA Nations League", home:"Switzerland", away:"Scotland", tip:"Over 1.5", odds:1.34, confidence:3}
+  {date:"2026-11-17", time:"16:00", league:"Africa Cup of Nations", home:"Tanzania", away:"Nigeria", tip:"Over 1.5", odds:1.35, confidence:3},
+  {date:"2026-11-17", time:"16:00", league:"Africa Cup of Nations", home:"Malawi", away:"Egypt", tip:"Egypt to Win", odds:1.20, confidence:3},
+  {date:"2026-11-17", time:"19:00", league:"Africa Cup of Nations", home:"Sierra Leone", away:"DR Congo", tip:"Over 1.5", odds:1.36, confidence:3},
+  {date:"2026-11-17", time:"22:00", league:"Africa Cup of Nations", home:"Liberia", away:"Cape Verde", tip:"DC 12", odds:1.32, confidence:3},
+  {date:"2026-11-17", time:"22:45", league:"UEFA Nations League", home:"Denmark", away:"Norway", tip:"DC 12", odds:1.26, confidence:3},
+  {date:"2026-11-17", time:"22:45", league:"UEFA Nations League", home:"Wales", away:"Portugal", tip:"Portugal to Win", odds:1.42, confidence:3},
+  {date:"2026-11-17", time:"22:45", league:"UEFA Nations League", home:"Bosnia and Herzegovina", away:"Romania", tip:"Over 1.5", odds:1.26, confidence:3},
+  {date:"2026-11-17", time:"22:45", league:"UEFA Nations League", home:"Hungary", away:"Northern Ireland", tip:"DC 12", odds:1.32, confidence:3},
+  {date:"2026-11-17", time:"22:45", league:"UEFA Nations League", home:"Ireland", away:"Kosovo", tip:"DC 1X", odds:1.25, confidence:3},
+  {date:"2026-11-17", time:"22:45", league:"UEFA Nations League", home:"Israel", away:"Austria", tip:"DC 12", odds:1.25, confidence:3},
+  {date:"2026-11-17", time:"22:45", league:"UEFA Nations League", home:"Poland", away:"Sweden", tip:"DC 12", odds:1.28, confidence:3},
+  {date:"2026-11-17", time:"22:45", league:"UEFA Nations League", home:"Ukraine", away:"Georgia", tip:"Over 1.5", odds:1.37, confidence:3}
 ];
 
 // Settled tips. result: "won" | "lost" | "void"
 const RESULTS = [
+  {date:"2026-11-16", league:"Africa Cup of Nations", home:"Sudan", away:"Senegal", tip:"Senegal to Win", odds:1.24, score:"2-4", result:"won"},
+  {date:"2026-11-16", league:"Africa Cup of Nations", home:"Zimbabwe", away:"Equatorial Guinea", tip:"DC 1X", odds:1.25, score:"3-0", result:"won"},
+  {date:"2026-11-16", league:"Africa Cup of Nations", home:"Namibia", away:"Cameroon", tip:"DC 12", odds:1.22, score:"0-3", result:"won"},
+  {date:"2026-11-16", league:"UEFA Nations League", home:"Faroe Islands", away:"Moldova", tip:"DC 12", odds:1.29, score:"1-0", result:"won"},
+  {date:"2026-11-16", league:"UEFA Nations League", home:"Kazakhstan", away:"Slovakia", tip:"Over 1.5", odds:1.31, score:"2-2", result:"won"},
+  {date:"2026-11-16", league:"Africa Cup of Nations", home:"Central African Republic", away:"Benin", tip:"DC 12", odds:1.21, score:"0-1", result:"won"},
+  {date:"2026-11-16", league:"UEFA Nations League", home:"Estonia", away:"Bulgaria", tip:"DC 1X", odds:1.25, score:"2-1", result:"won"},
+  {date:"2026-11-16", league:"UEFA Nations League", home:"Iceland", away:"Luxembourg", tip:"Iceland to Win", odds:1.25, score:"3-0", result:"won"},
+  {date:"2026-11-16", league:"UEFA Nations League", home:"Germany", away:"Netherlands", tip:"BTTS Yes", odds:1.40, score:"5-0", result:"lost"},
+  {date:"2026-11-16", league:"UEFA Nations League", home:"Greece", away:"Serbia", tip:"DC 12", odds:1.20, score:"1-0", result:"won"},
+  {date:"2026-11-16", league:"UEFA Nations League", home:"North Macedonia", away:"Slovenia", tip:"DC 12", odds:1.23, score:"0-3", result:"won"},
+  {date:"2026-11-16", league:"UEFA Nations League", home:"Switzerland", away:"Scotland", tip:"Over 1.5", odds:1.34, score:"4-0", result:"won"},
   {date:"2026-11-15", league:"La Liga 2", home:"Tenerife", away:"Ceuta", tip:"Over 1.5", odds:1.30, score:"2-0", result:"won"},
   {date:"2026-11-15", league:"UEFA Nations League", home:"Cyprus", away:"Montenegro", tip:"Over 1.5", odds:1.27, score:"1-4", result:"won"},
   {date:"2026-11-15", league:"UEFA Nations League", home:"Latvia", away:"Armenia", tip:"DC 12", odds:1.33, score:"0-0", result:"lost"},
