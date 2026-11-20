@@ -2,10 +2,10 @@
 // today's ticket and bookmaker of the month. Dates use YYYY-MM-DD.
 
 // Today's ticket on the hero. It is also shown automatically as the first booking code card.
-const TICKET = { bookmaker:"1xbet", date:"2026-11-19", bookingCode:"AQ479", picks:[
-  {time:"15:30", league:"Slovenian 2. SNL", home:"Roltek Dob", away:"NK Bistrica", tip:"2 - NK Bistrica to Win", odds:1.57},
-  {time:"15:30", league:"Armenian First League", home:"Noah Yerevan II", away:"Lernayin Artsakh", tip:"2 - Lernayin Artsakh to Win", odds:1.67},
-  {time:"15:30", league:"AFC Champions League", home:"Hanoi Police", away:"Johor Darul Takzim", tip:"2 - Johor Darul Takzim to Win", odds:1.56}
+const TICKET = { bookmaker:"1xbet", date:"2026-11-20", bookingCode:"K7LYA", picks:[
+  {time:"21:00", league:"Superliga", home:"AGF Aarhus", away:"Lyngby", tip:"1 - AGF Aarhus to Win", odds:1.63},
+  {time:"22:30", league:"Ekstraklasa", home:"Pogon Szczecin", away:"Slask Wroclaw", tip:"1 - Pogon Szczecin to Win", odds:1.66},
+  {time:"22:45", league:"Jupiler Pro League", home:"Cercle Brugge", away:"KVC Westerlo", tip:"1 - Cercle Brugge to Win", odds:1.92}
 ]};
 
 // Bookmaker of the month
@@ -15,12 +15,15 @@ const BOOK_OF_MONTH = { id:"1xbet", month:"November 2026", image:"images/1xbet-b
 
 // Booking codes: up to 3 shown as cards. odds is optional.
 const BOOKING_CODES = [
-  { bookmaker:"betway", date:"2026-11-19", games:3, odds:4.56, code:"BW837CDDD6" },
-  { bookmaker:"1win", date:"2026-11-19", games:5, odds:19.19, code:"j4XO6t91" }
+  { bookmaker:"betway", date:"2026-11-20", games:4, odds:4.99, code:"BW83A87E4C" },
+  { bookmaker:"1win", date:"2026-11-20", games:5, odds:17.03, code:"8XiPXC8e" }
 ];
 
 // Booking code results, newest first. result: "won" | "lost"
 const BOOKING_RESULTS = [
+  { bookmaker:"1xbet", date:"2026-11-19", games:3, odds:4.09, code:"AQ479", result:"lost" },
+  { bookmaker:"betway", date:"2026-11-19", games:3, odds:4.56, code:"BW837CDDD6", result:"won" },
+  { bookmaker:"1win", date:"2026-11-19", games:5, odds:19.19, code:"j4XO6t91", result:"won" },
   { bookmaker:"1xbet", date:"2026-11-18", games:3, odds:4.91, code:"2HCUY", result:"lost" },
   { bookmaker:"betway", date:"2026-11-18", games:5, odds:4.74, code:"BW8352CE68", result:"won" },
   { bookmaker:"1win", date:"2026-11-18", games:7, odds:53.47, code:"7bMmBd66", result:"won" },
@@ -145,22 +148,34 @@ const MAIN_LEAGUES = ["Premier League","La Liga","Serie A","Bundesliga","Ligue 1
 
 // Upcoming tips. confidence: 1–5. featured: true puts it on the hero betslip.
 const TIPS = [
-  {date:"2026-11-19", time:"13:00", league:"I Liqa", home:"MOIK Baku", away:"Sabail", tip:"Over 1.5", odds:1.23, confidence:3},
-  {date:"2026-11-19", time:"15:00", league:"I Liqa", home:"Khankendi", away:"Karvan", tip:"DC 12", odds:1.26, confidence:3},
-  {date:"2026-11-19", time:"16:00", league:"Jordan Cup", home:"Al Salt", away:"Al Yarmouk", tip:"DC 12", odds:1.21, confidence:3},
-  {date:"2026-11-19", time:"17:30", league:"Cameroon Elite 1", home:"Aigle Royal", away:"Colombe", tip:"DC 12", odds:1.28, confidence:3},
-  {date:"2026-11-19", time:"18:00", league:"Vtora Liga", home:"Dobrudzha", away:"Fratria", tip:"Over 1.5", odds:1.25, confidence:3},
-  {date:"2026-11-19", time:"18:00", league:"Egypt Cup", home:"Al Masry", away:"Asyut Petroleum", tip:"DC 12", odds:1.30, confidence:3},
-  {date:"2026-11-19", time:"18:00", league:"Egypt Cup", home:"Arab Contractors", away:"Al Qanah", tip:"DC 12", odds:1.27, confidence:3},
-  {date:"2026-11-19", time:"19:00", league:"Jordan Cup", home:"Al Jazeera", away:"Hay Al Amir", tip:"Al Jazeera to Win", odds:1.27, confidence:3},
-  {date:"2026-11-19", time:"19:45", league:"Algeria Ligue 1", home:"MC Alger", away:"Olympique Akbou", tip:"MC Alger to Win", odds:1.38, confidence:3},
-  {date:"2026-11-19", time:"19:45", league:"Algeria Ligue 1", home:"Rouisset", away:"CR Belouizdad", tip:"Over 1.5", odds:1.53, confidence:3},
-  {date:"2026-11-19", time:"21:00", league:"Egypt Cup", home:"ZED", away:"Smouha", tip:"DC 1X", odds:1.25, confidence:3},
-  {date:"2026-11-19", time:"22:00", league:"Algeria Ligue 1", home:"JS Kabylie", away:"USM Alger", tip:"DC 1X", odds:1.24, confidence:3}
+  {date:"2026-11-20", time:"16:00", league:"NBC Premier League", home:"Polisi FC", away:"Young Africans", tip:"Young Africans to Win", odds:1.40, confidence:3},
+  {date:"2026-11-20", time:"18:30", league:"NBC Premier League", home:"Namungo", away:"Mbeya City", tip:"DC 1X", odds:1.32, confidence:3},
+  {date:"2026-11-20", time:"19:00", league:"Algeria Ligue 1", home:"ASO Chlef", away:"Khenchela", tip:"DC 1X", odds:1.23, confidence:3},
+  {date:"2026-11-20", time:"19:00", league:"Algeria Ligue 1", home:"ES Setif", away:"Biskra", tip:"DC 12", odds:1.53, confidence:3},
+  {date:"2026-11-20", time:"19:00", league:"Efbet League", home:"Septemvri Sofia", away:"Lokomotiv Plovdiv", tip:"DC 12", odds:1.31, confidence:3},
+  {date:"2026-11-20", time:"20:30", league:"Saudi Pro League", home:"Al Ahli", away:"Al Nassr", tip:"DC 12", odds:1.24, confidence:3},
+  {date:"2026-11-20", time:"21:00", league:"Superliga", home:"AGF Aarhus", away:"Lyngby", tip:"DC 1X", odds:1.20, confidence:3},
+  {date:"2026-11-20", time:"21:00", league:"NBC Premier League", home:"Azam FC", away:"Singida Black Stars", tip:"Azam FC to Win", odds:1.46, confidence:3},
+  {date:"2026-11-20", time:"22:00", league:"Algeria Ligue 1", home:"Oran", away:"Saoura", tip:"DC 12", odds:1.24, confidence:3},
+  {date:"2026-11-20", time:"22:30", league:"Bundesliga", home:"Bayern Munich", away:"FC Koln", tip:"Over 3.5", odds:1.36, confidence:3},
+  {date:"2026-11-20", time:"22:45", league:"Ligue 1", home:"Troyes", away:"Le Havre", tip:"DC 1X", odds:1.32, confidence:3},
+  {date:"2026-11-20", time:"23:00", league:"La Liga", home:"Athletic Bilbao", away:"Espanyol", tip:"Over 1.5", odds:1.26, confidence:3}
 ];
 
 // Settled tips. result: "won" | "lost" | "void"
 const RESULTS = [
+  {date:"2026-11-19", league:"I Liqa", home:"MOIK Baku", away:"Sabail", tip:"Over 1.5", odds:1.23, score:"0-0", result:"lost"},
+  {date:"2026-11-19", league:"I Liqa", home:"Khankendi", away:"Karvan", tip:"DC 12", odds:1.26, score:"0-2", result:"won"},
+  {date:"2026-11-19", league:"Jordan Cup", home:"Al Salt", away:"Al Yarmouk", tip:"DC 12", odds:1.21, score:"5-0", result:"won"},
+  {date:"2026-11-19", league:"Cameroon Elite 1", home:"Aigle Royal", away:"Colombe", tip:"DC 12", odds:1.28, score:"0-0", result:"lost"},
+  {date:"2026-11-19", league:"Vtora Liga", home:"Dobrudzha", away:"Fratria", tip:"Over 1.5", odds:1.25, score:"0-5", result:"won"},
+  {date:"2026-11-19", league:"Egypt Cup", home:"Al Masry", away:"Asyut Petroleum", tip:"DC 12", odds:1.30, score:"3-0", result:"won"},
+  {date:"2026-11-19", league:"Egypt Cup", home:"Arab Contractors", away:"Al Qanah", tip:"DC 12", odds:1.27, score:"1-1", result:"lost"},
+  {date:"2026-11-19", league:"Jordan Cup", home:"Al Jazeera", away:"Hay Al Amir", tip:"Al Jazeera to Win", odds:1.27, score:"0-1", result:"lost"},
+  {date:"2026-11-19", league:"Algeria Ligue 1", home:"MC Alger", away:"Olympique Akbou", tip:"MC Alger to Win", odds:1.38, score:"0-1", result:"lost"},
+  {date:"2026-11-19", league:"Algeria Ligue 1", home:"Rouisset", away:"CR Belouizdad", tip:"Over 1.5", odds:1.53, score:"1-0", result:"lost"},
+  {date:"2026-11-19", league:"Egypt Cup", home:"ZED", away:"Smouha", tip:"DC 1X", odds:1.25, score:"1-0", result:"won"},
+  {date:"2026-11-19", league:"Algeria Ligue 1", home:"JS Kabylie", away:"USM Alger", tip:"DC 1X", odds:1.24, score:"2-0", result:"won"},
   {date:"2026-11-18", league:"Egypt Cup", home:"El Gouna", away:"Al Ittihad", tip:"DC X2", odds:1.24, score:"1-2", result:"won"},
   {date:"2026-11-18", league:"Egypt Cup", home:"Al Buqaa", away:"Jerash SC", tip:"Over 1.5", odds:1.22, score:"1-1", result:"won"},
   {date:"2026-11-18", league:"Slovenian Cup", home:"Race", away:"Radomlje", tip:"Radomlje to Win", odds:1.30, score:"1-2", result:"won"},
