@@ -2,10 +2,10 @@
 // today's ticket and bookmaker of the month. Dates use YYYY-MM-DD.
 
 // Today's ticket on the hero. It is also shown automatically as the first booking code card.
-const TICKET = { bookmaker:"1xbet", date:"2026-11-23", bookingCode:"QDQBJ", picks:[
-  {time:"22:45", league:"Serie A", home:"Monza", away:"Fiorentina", tip:"GG - Both Teams to Score - Yes", odds:1.54},
-  {time:"22:45", league:"Ligue 2", home:"Nantes", away:"Grenoble", tip:"1 - Nantes to Win", odds:1.45},
-  {time:"23:00", league:"Premier League", home:"Brentford", away:"Everton", tip:"GG - Both Teams to Score - Yes", odds:1.68}
+const TICKET = { bookmaker:"1xbet", date:"2026-11-24", bookingCode:"UNF3K", picks:[
+  {time:"20:45", league:"Champions League", home:"Bodo/Glimt", away:"LASK", tip:"1 - Bodo/Glimt to Win", odds:1.50},
+  {time:"20:45", league:"Champions League", home:"Galatasaray", away:"Aston Villa", tip:"2 - Aston Villa to Win", odds:2.25},
+  {time:"23:00", league:"Champions League", home:"Arsenal", away:"Dortmund", tip:"1 - Arsenal to Win", odds:1.45}
 ]};
 
 // Bookmaker of the month
@@ -21,6 +21,8 @@ const BOOKING_CODES = [
 
 // Booking code results, newest first. result: "won" | "lost"
 const BOOKING_RESULTS = [
+  { bookmaker:"1xbet", date:"2026-11-23", games:3, odds:3.75, code:"QDQBJ", result:"lost" },
+  { bookmaker:"1xbet", date:"2026-11-22", games:3, odds:2.90, code:"NL623", result:"lost" },
   { bookmaker:"1xbet", date:"2026-11-21", games:3, odds:3.95, code:"DNE4C", result:"lost" },
   { bookmaker:"betway", date:"2026-11-21", games:3, odds:3.42, code:"BW83C9A22C", result:"won" },
   { bookmaker:"1win", date:"2026-11-21", games:6, odds:43.34, code:"njRAMcb9", result:"won" },
