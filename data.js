@@ -2,10 +2,10 @@
 // today's ticket and bookmaker of the month. Dates use YYYY-MM-DD.
 
 // Today's ticket on the hero. It is also shown automatically as the first booking code card.
-const TICKET = { bookmaker:"1xbet", date:"2026-11-24", bookingCode:"UNF3K", picks:[
-  {time:"20:45", league:"Champions League", home:"Bodo/Glimt", away:"LASK", tip:"1 - Bodo/Glimt to Win", odds:1.50},
-  {time:"20:45", league:"Champions League", home:"Galatasaray", away:"Aston Villa", tip:"2 - Aston Villa to Win", odds:2.25},
-  {time:"23:00", league:"Champions League", home:"Arsenal", away:"Dortmund", tip:"1 - Arsenal to Win", odds:1.45}
+const TICKET = { bookmaker:"1xbet", date:"2026-11-25", bookingCode:"5P4PM", picks:[
+  {time:"23:00", league:"Champions League", home:"Club Brugge", away:"Liverpool", tip:"2 - Liverpool to Win", odds:1.62},
+  {time:"23:00", league:"Champions League", home:"Inter Milan", away:"Stuttgart", tip:"1 - Inter Milan to Win", odds:1.42},
+  {time:"23:00", league:"Champions League", home:"Lille", away:"Bayern Munich", tip:"2 - Bayern Munich to Win", odds:1.62}
 ]};
 
 // Bookmaker of the month
